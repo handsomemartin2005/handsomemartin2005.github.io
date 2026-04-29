@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>handsomemartin2005 | Personal Homepage</title>
+    <title>Zidu Zhang | Personal Homepage</title>
 
     <style>
         * {
@@ -18,10 +18,11 @@
             --muted: #5b6475;
             --primary: #1d8cff;
             --primary-dark: #0068d9;
-            --card: rgba(255, 255, 255, 0.82);
+            --purple: #8b5cf6;
+            --card: rgba(255, 255, 255, 0.84);
             --border: rgba(29, 140, 255, 0.16);
             --shadow: 0 18px 45px rgba(17, 70, 143, 0.13);
-            --section-bg: rgba(255, 255, 255, 0.45);
+            --section-bg: rgba(255, 255, 255, 0.48);
         }
 
         body.dark {
@@ -29,11 +30,11 @@
             --text: #eef5ff;
             --muted: #a8b3c7;
             --primary: #69b4ff;
-            --primary-dark: #1d8cff;
-            --card: rgba(16, 31, 54, 0.82);
+            --primary-dark: #69b4ff;
+            --card: rgba(16, 31, 54, 0.84);
             --border: rgba(105, 180, 255, 0.2);
             --shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
-            --section-bg: rgba(12, 24, 42, 0.55);
+            --section-bg: rgba(12, 24, 42, 0.58);
         }
 
         html {
@@ -91,12 +92,8 @@
         }
 
         @keyframes floatBlob {
-            from {
-                transform: translate3d(0, 0, 0) scale(1);
-            }
-            to {
-                transform: translate3d(45px, 35px, 0) scale(1.08);
-            }
+            from { transform: translate3d(0, 0, 0) scale(1); }
+            to { transform: translate3d(45px, 35px, 0) scale(1.08); }
         }
 
         .nav {
@@ -104,9 +101,9 @@
             top: 18px;
             left: 50%;
             transform: translateX(-50%);
-            width: min(1080px, calc(100% - 32px));
-            height: 64px;
-            padding: 0 18px;
+            width: min(1180px, calc(100% - 32px));
+            min-height: 64px;
+            padding: 10px 18px;
             border: 1px solid var(--border);
             background: rgba(255, 255, 255, 0.62);
             backdrop-filter: blur(18px);
@@ -128,13 +125,14 @@
             gap: 10px;
             font-weight: 800;
             letter-spacing: 0.3px;
+            white-space: nowrap;
         }
 
         .logo-mark {
             width: 36px;
             height: 36px;
             border-radius: 12px;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            background: linear-gradient(135deg, var(--primary), var(--purple));
             color: white;
             display: grid;
             place-items: center;
@@ -144,15 +142,17 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--muted);
-            padding: 10px 12px;
+            padding: 9px 10px;
             border-radius: 999px;
-            font-size: 14px;
+            font-size: 13px;
             transition: 0.25s ease;
         }
 
@@ -163,7 +163,6 @@
         }
 
         .theme-btn {
-            border: none;
             background: var(--section-bg);
             color: var(--text);
             border: 1px solid var(--border);
@@ -171,31 +170,28 @@
             border-radius: 999px;
             cursor: pointer;
             transition: transform 0.25s ease, background 0.25s ease;
+            white-space: nowrap;
         }
 
-        .theme-btn:hover {
-            transform: translateY(-2px);
-        }
+        .theme-btn:hover { transform: translateY(-2px); }
 
         .container {
-            width: min(1080px, calc(100% - 34px));
+            width: min(1120px, calc(100% - 34px));
             margin: 0 auto;
         }
 
-        section {
-            padding: 96px 0;
-        }
+        section { padding: 96px 0; }
 
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding-top: 110px;
+            padding-top: 120px;
         }
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
+            grid-template-columns: 1.12fr 0.88fr;
             gap: 48px;
             align-items: center;
         }
@@ -214,19 +210,15 @@
             margin-bottom: 22px;
         }
 
-        body.dark .badge {
-            color: var(--primary);
-        }
-
         .hero h1 {
-            font-size: clamp(42px, 6vw, 78px);
+            font-size: clamp(42px, 6vw, 76px);
             line-height: 1.08;
             margin-bottom: 18px;
             letter-spacing: -2px;
         }
 
         .gradient-text {
-            background: linear-gradient(135deg, var(--primary), #8b5cf6, #00bcd4);
+            background: linear-gradient(135deg, var(--primary), var(--purple), #00bcd4);
             -webkit-background-clip: text;
             color: transparent;
         }
@@ -243,11 +235,7 @@
             animation: blink 0.8s infinite;
         }
 
-        @keyframes blink {
-            50% {
-                opacity: 0;
-            }
-        }
+        @keyframes blink { 50% { opacity: 0; } }
 
         .hero-actions {
             display: flex;
@@ -271,7 +259,7 @@
 
         .btn.primary {
             color: white;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            background: linear-gradient(135deg, var(--primary), var(--purple));
             box-shadow: 0 14px 28px rgba(29, 140, 255, 0.26);
         }
 
@@ -281,9 +269,7 @@
             background: var(--card);
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-        }
+        .btn:hover { transform: translateY(-3px); }
 
         .profile-card {
             position: relative;
@@ -297,15 +283,22 @@
             transition: transform 0.18s ease;
         }
 
-        .avatar-big {
-            width: 140px;
-            height: 140px;
+        .photo-placeholder {
+            width: 150px;
+            height: 150px;
             margin: 0 auto 22px;
             border-radius: 42px;
             display: grid;
             place-items: center;
-            font-size: 66px;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            text-align: center;
+            color: white;
+            font-size: 14px;
+            font-weight: 800;
+            line-height: 1.45;
+            background:
+                linear-gradient(135deg, rgba(29,140,255,0.96), rgba(139,92,246,0.96)),
+                repeating-linear-gradient(45deg, transparent 0 10px, rgba(255,255,255,0.2) 10px 20px);
+            border: 2px dashed rgba(255,255,255,0.7);
             box-shadow: 0 18px 45px rgba(29, 140, 255, 0.26);
         }
 
@@ -374,6 +367,12 @@
             gap: 22px;
         }
 
+        .two-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
         .glass-card {
             border: 1px solid var(--border);
             background: var(--card);
@@ -399,20 +398,24 @@
             transform: translateY(-8px);
         }
 
-        .glass-card:hover::before {
-            opacity: 1;
-        }
+        .glass-card:hover::before { opacity: 1; }
+
+        .glass-card > * { position: relative; }
 
         .glass-card h3 {
             font-size: 22px;
             margin-bottom: 12px;
-            position: relative;
         }
 
-        .glass-card p {
+        .glass-card p,
+        .glass-card li {
             color: var(--muted);
             line-height: 1.75;
-            position: relative;
+        }
+
+        .glass-card ul {
+            padding-left: 18px;
+            margin-top: 10px;
         }
 
         .icon {
@@ -424,7 +427,38 @@
             font-size: 26px;
             background: linear-gradient(135deg, rgba(29, 140, 255, 0.14), rgba(139, 92, 246, 0.16));
             margin-bottom: 18px;
-            position: relative;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+        .tag {
+            font-size: 12px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            color: var(--primary-dark);
+            background: rgba(29, 140, 255, 0.1);
+            border: 1px solid rgba(29, 140, 255, 0.13);
+            font-weight: 700;
+        }
+
+        .project-image-placeholder {
+            height: 170px;
+            border-radius: 22px;
+            border: 2px dashed rgba(29, 140, 255, 0.35);
+            background:
+                linear-gradient(135deg, rgba(29, 140, 255, 0.12), rgba(139, 92, 246, 0.12)),
+                repeating-linear-gradient(45deg, transparent 0 12px, rgba(29, 140, 255, 0.06) 12px 24px);
+            display: grid;
+            place-items: center;
+            text-align: center;
+            color: var(--primary-dark);
+            font-weight: 800;
+            margin-bottom: 20px;
         }
 
         .skill-list {
@@ -444,6 +478,7 @@
         .skill-top {
             display: flex;
             justify-content: space-between;
+            gap: 16px;
             margin-bottom: 12px;
             font-weight: 800;
         }
@@ -459,7 +494,7 @@
             height: 100%;
             width: 0;
             border-radius: 999px;
-            background: linear-gradient(90deg, var(--primary), #8b5cf6);
+            background: linear-gradient(90deg, var(--primary), var(--purple));
             transition: width 1.2s ease;
         }
 
@@ -488,39 +523,11 @@
             color: white;
         }
 
-        .project-card {
-            display: block;
-        }
-
-        .project-card.hide {
-            display: none;
-        }
-
-        .tag-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 18px;
-            position: relative;
-        }
-
-        .tag {
-            font-size: 12px;
-            padding: 6px 10px;
-            border-radius: 999px;
-            color: var(--primary-dark);
-            background: rgba(29, 140, 255, 0.1);
-            border: 1px solid rgba(29, 140, 255, 0.13);
-            font-weight: 700;
-        }
-
-        body.dark .tag {
-            color: var(--primary);
-        }
+        .project-card.hide { display: none; }
 
         .timeline {
             position: relative;
-            max-width: 860px;
+            max-width: 920px;
             margin: 0 auto;
         }
 
@@ -531,7 +538,7 @@
             top: 0;
             bottom: 0;
             width: 3px;
-            background: linear-gradient(var(--primary), #8b5cf6);
+            background: linear-gradient(var(--primary), var(--purple));
             border-radius: 99px;
         }
 
@@ -548,14 +555,12 @@
             width: 26px;
             height: 26px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            background: linear-gradient(135deg, var(--primary), var(--purple));
             border: 5px solid var(--bg);
             transition: 0.35s ease;
         }
 
-        .timeline-item:hover .timeline-dot {
-            transform: scale(1.18);
-        }
+        .timeline-item:hover .timeline-dot { transform: scale(1.18); }
 
         .timeline-card {
             border: 1px solid var(--border);
@@ -566,9 +571,7 @@
             transition: 0.28s ease;
         }
 
-        .timeline-card:hover {
-            transform: translateX(8px);
-        }
+        .timeline-card:hover { transform: translateX(8px); }
 
         .timeline-card .date {
             color: var(--primary);
@@ -576,13 +579,17 @@
             margin-bottom: 8px;
         }
 
-        .timeline-card h3 {
-            margin-bottom: 8px;
-        }
+        .timeline-card h3 { margin-bottom: 8px; }
 
         .timeline-card p {
             color: var(--muted);
             line-height: 1.7;
+        }
+
+        .timeline-card .meta {
+            margin-top: 8px;
+            color: var(--text);
+            font-weight: 700;
         }
 
         .contact-box {
@@ -605,6 +612,13 @@
             margin-bottom: 24px;
         }
 
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
         footer {
             text-align: center;
             padding: 30px 0 48px;
@@ -622,38 +636,20 @@
             transform: translateY(0);
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 980px) {
             .nav {
-                height: auto;
-                padding: 12px;
                 border-radius: 24px;
                 align-items: flex-start;
                 gap: 10px;
             }
 
-            .nav-links {
-                display: none;
-            }
-
-            .hero-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skill-list {
-                grid-template-columns: 1fr;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 78px 0;
-            }
+            .nav-links { display: none; }
+            .hero-grid { grid-template-columns: 1fr; }
+            .card-grid,
+            .two-grid,
+            .skill-list { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: 1fr; }
+            section { padding: 78px 0; }
         }
     </style>
 </head>
@@ -666,8 +662,8 @@
 
     <nav class="nav">
         <div class="logo">
-            <div class="logo-mark">H</div>
-            <span>handsomemartin2005</span>
+            <div class="logo-mark">Z</div>
+            <span>Zidu Zhang</span>
         </div>
 
         <div class="nav-links">
@@ -675,6 +671,7 @@
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
             <a href="#papers">Publications</a>
             <a href="#awards">Awards</a>
             <a href="#contact">Contact</a>
@@ -684,10 +681,11 @@
     </nav>
 
     <main>
+        <!-- ===================== EDITABLE CONTENT: HOME ===================== -->
         <section class="hero" id="home">
             <div class="container hero-grid">
                 <div class="reveal">
-                    <div class="badge">Personal Homepage · GitHub Pages</div>
+                    <div class="badge">Computer Science · Computer Vision · Software Engineering</div>
                     <h1>
                         Hi, I am<br />
                         <span class="gradient-text">Zidu Zhang</span>
@@ -702,105 +700,125 @@
                 </div>
 
                 <div class="profile-card reveal" id="tiltCard">
-                    <div class="avatar-big">👨‍💻</div>
-                    <h2>Computer Science Learner</h2>
+                    <div class="photo-placeholder">
+                        Profile Photo<br />Placeholder
+                    </div>
+                    <h2>Computer Science Student</h2>
                     <p>
-                        I currently focus on computer vision and software engineering, with a strong interest in data science and large language models.
+                        I currently focus on computer vision and software engineering,
+                        with a strong interest in data science and large language models.
                     </p>
 
                     <div class="stats">
                         <div class="stat">
-                            <strong>5+</strong>
-                            <span>Sections</span>
+                            <strong>BJUT</strong>
+                            <span>Computer Science</span>
                         </div>
                         <div class="stat">
-                            <strong>AI</strong>
-                            <span>Research Interest</span>
+                            <strong>3</strong>
+                            <span>Research Works</span>
                         </div>
                         <div class="stat">
-                            <strong>GitHub</strong>
-                            <span>Project Portfolio</span>
+                            <strong>6</strong>
+                            <span>Awards & Honors</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ===================== EDITABLE CONTENT: ABOUT ===================== -->
         <section id="about">
             <div class="container">
                 <div class="section-title reveal">
                     <span>ABOUT ME</span>
                     <h2>Personal Introduction</h2>
-                    <p>This section introduces my background, interests, current focus, and future goals.</p>
+                    <p>My academic background, research interests, and current development direction.</p>
                 </div>
 
                 <div class="card-grid">
                     <div class="glass-card reveal">
                         <div class="icon">🎓</div>
-                        <h3>Academic Background</h3>
+                        <h3>Education</h3>
                         <p>
-                            I am studying computer science and related technologies, with interests in
-                            software engineering, artificial intelligence, computer vision, and web development.
+                            Beijing University of Technology (211 / Double First-Class),
+                            Bachelor student in Computer Science and Technology, 2023.09 - Present.
                         </p>
+                        <div class="tag-row">
+                            <span class="tag">Digital Image Processing: 96</span>
+                            <span class="tag">Algorithm Design: 93</span>
+                            <span class="tag">Data Structures</span>
+                            <span class="tag">Computer Networks</span>
+                        </div>
                     </div>
 
                     <div class="glass-card reveal">
                         <div class="icon">🔬</div>
                         <h3>Research Interests</h3>
                         <p>
-                            My interests include object detection, small object detection, open-source software analysis,
-                            intelligent recommendation systems, and data-driven research.
+                            My interests include computer vision, small-defect detection, multimodal learning,
+                            LLM applications, data science, and empirical studies of open-source software.
                         </p>
                     </div>
 
                     <div class="glass-card reveal">
                         <div class="icon">🚀</div>
-                        <h3>Current Goals</h3>
+                        <h3>Self Evaluation</h3>
                         <p>
-                            I am working on improving my engineering skills, organizing research outcomes,
-                            building practical projects, and maintaining a clear GitHub portfolio.
+                            I have a solid foundation in computer science and hands-on research experience.
+                            I can independently conduct data processing, model development, experimental analysis,
+                            and system implementation.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ===================== EDITABLE CONTENT: SKILLS ===================== -->
         <section id="skills">
             <div class="container">
                 <div class="section-title reveal">
                     <span>SKILLS</span>
                     <h2>Technical Skills</h2>
-                    <p>This section lists programming languages, frameworks, algorithms, and tools I have learned.</p>
+                    <p>Core skills summarized from my research, projects, and engineering experience.</p>
                 </div>
 
                 <div class="skill-list">
                     <div class="skill-item reveal">
                         <div class="skill-top">
-                            <span>Python / Data Processing</span>
-                            <span>85%</span>
+                            <span>Python / Data Processing / Pandas / NumPy</span>
+                            <span>90%</span>
                         </div>
-                        <div class="bar"><div class="bar-fill" data-width="85%"></div></div>
+                        <div class="bar"><div class="bar-fill" data-width="90%"></div></div>
                     </div>
 
                     <div class="skill-item reveal">
                         <div class="skill-top">
-                            <span>Frontend Development / HTML / CSS / JS</span>
-                            <span>75%</span>
+                            <span>YOLOv8 / Object Detection / Computer Vision</span>
+                            <span>88%</span>
                         </div>
-                        <div class="bar"><div class="bar-fill" data-width="75%"></div></div>
+                        <div class="bar"><div class="bar-fill" data-width="88%"></div></div>
                     </div>
 
                     <div class="skill-item reveal">
                         <div class="skill-top">
-                            <span>Flask / Backend APIs</span>
-                            <span>70%</span>
+                            <span>PyTorch / Transformer / ViT / BERT</span>
+                            <span>84%</span>
                         </div>
-                        <div class="bar"><div class="bar-fill" data-width="70%"></div></div>
+                        <div class="bar"><div class="bar-fill" data-width="84%"></div></div>
                     </div>
 
                     <div class="skill-item reveal">
                         <div class="skill-top">
-                            <span>YOLO / Computer Vision</span>
+                            <span>LLM / SFT / Prompt Engineering / Multi-Agent</span>
+                            <span>82%</span>
+                        </div>
+                        <div class="bar"><div class="bar-fill" data-width="82%"></div></div>
+                    </div>
+
+                    <div class="skill-item reveal">
+                        <div class="skill-top">
+                            <span>Flask / Jinja2 / Neo4j / Backend Engineering</span>
                             <span>80%</span>
                         </div>
                         <div class="bar"><div class="bar-fill" data-width="80%"></div></div>
@@ -808,7 +826,7 @@
 
                     <div class="skill-item reveal">
                         <div class="skill-top">
-                            <span>Git / GitHub</span>
+                            <span>C/C++ / R / MATLAB / Linux / Git</span>
                             <span>78%</span>
                         </div>
                         <div class="bar"><div class="bar-fill" data-width="78%"></div></div>
@@ -816,105 +834,116 @@
 
                     <div class="skill-item reveal">
                         <div class="skill-top">
-                            <span>Academic Writing / Experimental Analysis</span>
-                            <span>72%</span>
+                            <span>Academic English Reading and Writing</span>
+                            <span>86%</span>
                         </div>
-                        <div class="bar"><div class="bar-fill" data-width="72%"></div></div>
+                        <div class="bar"><div class="bar-fill" data-width="86%"></div></div>
+                    </div>
+
+                    <div class="skill-item reveal">
+                        <div class="skill-top">
+                            <span>CET-4: 596 / CET-6: 513 / TOEFL Writing: 4.5/6</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="bar"><div class="bar-fill" data-width="85%"></div></div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ===================== EDITABLE CONTENT: PROJECTS ===================== -->
         <section id="projects">
             <div class="container">
                 <div class="section-title reveal">
                     <span>PROJECTS</span>
                     <h2>Selected Projects</h2>
-                    <p>Click different category buttons to filter and view my projects.</p>
+                    <p>Project experience in LLM applications, computer vision, multimodal learning, and data-driven systems.</p>
                 </div>
 
                 <div class="filters reveal">
                     <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="web">Web System</button>
-                    <button class="filter-btn" data-filter="ai">Artificial Intelligence</button>
-                    <button class="filter-btn" data-filter="data">Data Analysis</button>
+                    <button class="filter-btn" data-filter="llm">LLM Application</button>
+                    <button class="filter-btn" data-filter="vision">Computer Vision</button>
+                    <button class="filter-btn" data-filter="forecasting">Forecasting</button>
+                    <button class="filter-btn" data-filter="data">Data Engineering</button>
                 </div>
 
-                <div class="card-grid">
-                    <div class="glass-card project-card reveal" data-category="web">
-                        <div class="icon">🏆</div>
-                        <h3>Competition Information Filtering and Recommendation System</h3>
-                        <p>
-                            A student-oriented competition service system with user center, competition search,
-                            personalized recommendation, forum interaction, and admin management modules.
-                        </p>
+                <div class="two-grid">
+                    <div class="glass-card project-card reveal" data-category="llm vision data">
+                        <div class="project-image-placeholder">Project Image Placeholder<br />Metering System / PowerKG / MeterAgent</div>
+                        <div class="icon">⚡</div>
+                        <h3>LLM-based Reliability and Intelligent O&M Optimization for Power Metering Systems</h3>
+                        <p><strong>Role:</strong> Core Member</p>
+                        <ul>
+                            <li>Collected 40,000+ records of metering device models, suppliers, and fault information using Selenium from industrial and technical platforms.</li>
+                            <li>Used YOLOv8 to locate meter dial regions and extract nameplate or panel text, achieving 97%+ dial-region detection accuracy in the sample test set.</li>
+                            <li>Built structured LLM-readable inputs and improved effective OCR recognition by about 15%.</li>
+                            <li>Collaborated on a Flask + Jinja2 + Neo4j pipeline for PowerKG, constructing tens of thousands of entity-relation records.</li>
+                            <li>Designed MeterAgent for metering-device fault analysis and diagnosis, and contributed to a paper submission and a utility-model patent application.</li>
+                        </ul>
                         <div class="tag-row">
-                            <span class="tag">Vue</span>
-                            <span class="tag">Flask</span>
-                            <span class="tag">Recommendation</span>
-                        </div>
-                    </div>
-
-                    <div class="glass-card project-card reveal" data-category="ai">
-                        <div class="icon">🎯</div>
-                        <h3>YOLO-based Small Object Detection</h3>
-                        <p>
-                            A computer vision project focusing on fine-grained feature enhancement,
-                            cross-layer fusion, and attention-based improvement for small object detection.
-                        </p>
-                        <div class="tag-row">
+                            <span class="tag">Selenium</span>
                             <span class="tag">YOLOv8</span>
-                            <span class="tag">Small Object Detection</span>
-                            <span class="tag">Computer Vision</span>
+                            <span class="tag">OCR</span>
+                            <span class="tag">Flask</span>
+                            <span class="tag">Jinja2</span>
+                            <span class="tag">Neo4j</span>
+                            <span class="tag">LLM</span>
+                            <span class="tag">MeterAgent</span>
                         </div>
                     </div>
 
-                    <div class="glass-card project-card reveal" data-category="data">
-                        <div class="icon">📊</div>
-                        <h3>GitHub Open-source Project Analytics</h3>
-                        <p>
-                            A data analysis project for mining open-source repositories, identifying AI components,
-                            analyzing API usage, detecting risks, and visualizing empirical results.
-                        </p>
+                    <div class="glass-card project-card reveal" data-category="forecasting data llm">
+                        <div class="project-image-placeholder">Project Image Placeholder<br />Multimodal Load Forecasting / Agent Analysis</div>
+                        <div class="icon">📈</div>
+                        <h3>Multimodal Load Forecasting and Intelligent Analysis for Proxy Electricity Purchasing</h3>
+                        <p><strong>Role:</strong> Technical Lead of the Trading Curve Forecasting Module</p>
+                        <ul>
+                            <li>Built a pandas + NumPy data-processing pipeline for load, weather, text, and multimodal data cleaning.</li>
+                            <li>Handled anomaly detection, missing-value repair, and time-granularity alignment, forming 100,000+ trainable samples.</li>
+                            <li>Developed a PyTorch + Transformer + ViT + BERT multimodal forecasting model for time-series, image, and text feature fusion.</li>
+                            <li>Reduced forecasting errors by approximately 15%-64% compared with single time-series baselines in sample experiments.</li>
+                            <li>Integrated LLM + Agno Multi-Agents + SHAP for event extraction, anomaly attribution, forecast correction, and explainable analysis.</li>
+                        </ul>
                         <div class="tag-row">
-                            <span class="tag">GitHub API</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Data Mining</span>
+                            <span class="tag">Pandas</span>
+                            <span class="tag">NumPy</span>
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">Transformer</span>
+                            <span class="tag">ViT</span>
+                            <span class="tag">BERT</span>
+                            <span class="tag">LLM</span>
+                            <span class="tag">SHAP</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="papers">
+        <!-- ===================== EDITABLE CONTENT: EXPERIENCE ===================== -->
+        <section id="experience">
             <div class="container">
                 <div class="section-title reveal">
-                    <span>PUBLICATIONS</span>
-                    <h2>Publications</h2>
-                    <p>If there are no formal publications yet, this section can include manuscripts, reports, or works in progress.</p>
+                    <span>EXPERIENCE</span>
+                    <h2>Internship Experience</h2>
+                    <p>Research and engineering practice in enterprise-oriented energy internet projects.</p>
                 </div>
 
                 <div class="timeline">
                     <div class="timeline-item reveal">
                         <div class="timeline-dot"></div>
                         <div class="timeline-card">
-                            <div class="date">2026</div>
-                            <h3>Paper Title To Be Updated</h3>
+                            <div class="date">2025.07 - Present</div>
+                            <h3>North China Energy Internet Research Institute</h3>
+                            <div class="meta">Research Assistant</div>
                             <p>
-                                Add the paper title, conference or journal name, author information,
-                                research direction, and current status, such as published, under review, or in preparation.
+                                Participated in multiple enterprise research projects, mainly responsible for time-series data analysis,
+                                proxy electricity load forecasting, and algorithmic support. Conducted data processing, modeling analysis,
+                                and experimental validation.
                             </p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-card">
-                            <div class="date">2025</div>
-                            <h3>Research Report / Course Paper</h3>
                             <p>
-                                This area can also display course papers, technical reports,
-                                project reports, and preliminary research outcomes.
+                                Also participated in field research on proxy electricity purchasing workflows, load-formation mechanisms,
+                                and data-collection methods, and iteratively optimized feature design, analysis logic, and forecasting schemes.
                             </p>
                         </div>
                     </div>
@@ -922,25 +951,65 @@
             </div>
         </section>
 
+        <!-- ===================== EDITABLE CONTENT: PUBLICATIONS ===================== -->
+        <section id="papers">
+            <div class="container">
+                <div class="section-title reveal">
+                    <span>PUBLICATIONS</span>
+                    <h2>Research Outcomes</h2>
+                    <p>Published, submitted, and ongoing research works.</p>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <div class="date">ICPECA 2026</div>
+                            <h3>YOLO-ARC: Deployment-Ready and Robust Small-Defect Detection for Industrial Surfaces</h3>
+                            <div class="meta">Zidu Zhang, Ruidi Liu, Xinyi Chen</div>
+                            <p>Published at ICPECA 2026, an EI-indexed conference.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <div class="date">Under Review · ESEM 2026</div>
+                            <h3>Echoes of Change: A Large-Scale Empirical Study of LLM Integration in Open-Source Software</h3>
+                            <div class="meta">Zidu Zhang, Jialiang Dong</div>
+                            <p>Submitted to ESEM 2026, a CCF-B conference.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <div class="date">Under Review · Applied Energy</div>
+                            <h3>RMPF-Orion: Proxy Electricity Load Forecasting with Robust Temporal Modeling and Multimodal Learning</h3>
+                            <div class="meta">Zidu Zhang, Yu Min, Zhihan Su</div>
+                            <p>Submitted to Applied Energy, a SCI Q1 top journal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== EDITABLE CONTENT: AWARDS ===================== -->
         <section id="awards">
             <div class="container">
                 <div class="section-title reveal">
                     <span>AWARDS</span>
                     <h2>Awards and Honors</h2>
-                    <p>This section can display competition awards, scholarships, certificates, and outstanding project honors.</p>
+                    <p>Competition awards, innovation honors, and academic project achievements.</p>
                 </div>
 
                 <div class="timeline">
                     <div class="timeline-item reveal">
                         <div class="timeline-dot"></div>
                         <div class="timeline-card">
-                            <div class="date">2026</div>
-                            <h3>Award Name To Be Updated</h3>
-                            <p>
-                                Add the competition name, award level, your contribution,
-                                and whether you were responsible for algorithm design, system development,
-                                data analysis, or paper writing.
-                            </p>
+                            <div class="date">2025</div>
+                            <h3>The 12th National College Student Energy Economics Academic Creativity Competition</h3>
+                            <p>Provincial First Prize, nominated for national award.</p>
                         </div>
                     </div>
 
@@ -948,27 +1017,62 @@
                         <div class="timeline-dot"></div>
                         <div class="timeline-card">
                             <div class="date">2025</div>
-                            <h3>Project Practice / Certificate</h3>
-                            <p>
-                                Add course project honors, technical certificates, school-level awards,
-                                or team project contributions here.
-                            </p>
+                            <h3>Higher Education Press Cup National Undergraduate Mathematical Contest in Modeling</h3>
+                            <p>Provincial Second Prize.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <div class="date">2025</div>
+                            <h3>The 11th "Dingxin Cup" Student Entrepreneurship Plan Competition, BJUT</h3>
+                            <p>Silver Award.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <div class="date">2025</div>
+                            <h3>China International College Students' Innovation Competition</h3>
+                            <p>Provincial Second Prize.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <div class="date">2025</div>
+                            <h3>RAICOM Robot Developer Competition</h3>
+                            <p>Provincial Third Prize.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <div class="date">BJUT</div>
+                            <h3>Innovation and Entrepreneurship Project</h3>
+                            <p>Innovation and Entrepreneurship Award.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ===================== EDITABLE CONTENT: CONTACT ===================== -->
         <section id="contact">
             <div class="container">
                 <div class="contact-box reveal">
                     <h2>Contact</h2>
                     <p>
-                        Feel free to visit my GitHub profile to learn more about my projects.
-                        This section can also include my email, resume link, blog link, or portfolio link.
+                        I welcome academic communication, project collaboration, and technical discussions.
+                        My phone number is not displayed here by default to avoid public exposure on the website.
                     </p>
-                    <div class="hero-actions" style="justify-content: center;">
-                        <a class="btn primary" href="https://github.com/handsomemartin2005" target="_blank">GitHub Profile</a>
+                    <div class="contact-links">
+                        <a class="btn primary" href="mailto:handsomemartin@emails.bjut.edu.cn">Email Me</a>
+                        <a class="btn ghost" href="https://github.com/handsomemartin2005" target="_blank">GitHub Profile</a>
                         <a class="btn ghost" href="#home">Back to Top</a>
                     </div>
                 </div>
@@ -977,10 +1081,19 @@
     </main>
 
     <footer>
-        © 2026 handsomemartin2005 · Powered by GitHub Pages
+        © 2026 Zidu Zhang · Powered by GitHub Pages
     </footer>
 
     <script>
+        // ===================== EDITABLE CONTENT: TYPING WORDS =====================
+        const words = [
+            "Computer Vision Learner",
+            "Software Engineering Practitioner",
+            "Data Science Enthusiast",
+            "Large Language Model Explorer",
+            "AI Project Builder"
+        ];
+
         const body = document.body;
         const themeBtn = document.getElementById("themeBtn");
 
@@ -990,14 +1103,6 @@
         });
 
         const typingText = document.getElementById("typingText");
-        const words = [
-            "Computer Science Learner",
-            "Software Development Practitioner",
-            "Artificial Intelligence Explorer",
-            "Computer Vision Researcher",
-            "GitHub Portfolio Builder"
-        ];
-
         let wordIndex = 0;
         let charIndex = 0;
         let deleting = false;
@@ -1044,9 +1149,7 @@
                     }
                 }
             });
-        }, {
-            threshold: 0.16
-        });
+        }, { threshold: 0.16 });
 
         revealItems.forEach((item) => observer.observe(item));
 
@@ -1061,7 +1164,8 @@
                 const filter = btn.dataset.filter;
 
                 projectCards.forEach((card) => {
-                    if (filter === "all" || card.dataset.category === filter) {
+                    const categories = card.dataset.category.split(" ");
+                    if (filter === "all" || categories.includes(filter)) {
                         card.classList.remove("hide");
                     } else {
                         card.classList.add("hide");
@@ -1097,10 +1201,8 @@
             const rect = tiltCard.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-
             const rotateX = ((y / rect.height) - 0.5) * -10;
             const rotateY = ((x / rect.width) - 0.5) * 10;
-
             tiltCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         });
 
@@ -1110,7 +1212,6 @@
 
         const canvas = document.getElementById("particleCanvas");
         const ctx = canvas.getContext("2d");
-
         let particles = [];
 
         function resizeCanvas() {
