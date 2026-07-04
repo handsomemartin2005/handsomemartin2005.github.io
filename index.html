@@ -3,38 +3,32 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zidu Zhang | Personal Homepage</title>
-
+    <meta name="description" content="Zidu Zhang - computer vision, multimodal AI, intelligent systems, and research homepage." />
+    <title>Zidu Zhang | Research Homepage</title>
     <style>
+        :root {
+            color-scheme: dark;
+            --bg: #05070d;
+            --bg-2: #07111b;
+            --panel: rgba(9, 17, 27, 0.82);
+            --panel-strong: rgba(12, 24, 38, 0.94);
+            --line: rgba(113, 199, 255, 0.18);
+            --line-strong: rgba(120, 214, 255, 0.42);
+            --text: #edf7ff;
+            --muted: #91a6b9;
+            --soft: #60758a;
+            --cyan: #64d8ff;
+            --blue: #7aa8ff;
+            --mint: #8cf5ce;
+            --violet: #b4a1ff;
+            --amber: #eac36b;
+            --danger: #ff7c9b;
+            --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+            --max: 1180px;
+        }
+
         * {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --bg: #f6fbff;
-            --text: #172033;
-            --muted: #5b6475;
-            --primary: #1d8cff;
-            --primary-dark: #0068d9;
-            --purple: #8b5cf6;
-            --card: rgba(255, 255, 255, 0.84);
-            --border: rgba(29, 140, 255, 0.16);
-            --shadow: 0 18px 45px rgba(17, 70, 143, 0.13);
-            --section-bg: rgba(255, 255, 255, 0.48);
-        }
-
-        body.dark {
-            --bg: #07111f;
-            --text: #eef5ff;
-            --muted: #a8b3c7;
-            --primary: #69b4ff;
-            --primary-dark: #69b4ff;
-            --card: rgba(16, 31, 54, 0.84);
-            --border: rgba(105, 180, 255, 0.2);
-            --shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
-            --section-bg: rgba(12, 24, 42, 0.58);
         }
 
         html {
@@ -42,391 +36,442 @@
         }
 
         body {
-            font-family: Arial, "Segoe UI", sans-serif;
-            background: var(--bg);
+            margin: 0;
+            min-height: 100vh;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            background:
+                linear-gradient(rgba(100, 216, 255, 0.055) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(100, 216, 255, 0.045) 1px, transparent 1px),
+                linear-gradient(180deg, var(--bg), var(--bg-2) 48%, #04070d);
+            background-size: 38px 38px, 38px 38px, auto;
             color: var(--text);
             overflow-x: hidden;
-            transition: background 0.35s ease, color 0.35s ease;
         }
 
-        canvas#particleCanvas {
+        body::before {
+            content: "";
             position: fixed;
             inset: 0;
-            z-index: -3;
-            background: linear-gradient(135deg, #eaf7ff 0%, #f7fbff 42%, #e8f4ff 100%);
-        }
-
-        body.dark canvas#particleCanvas {
-            background: linear-gradient(135deg, #07111f 0%, #0d1b30 50%, #06101d 100%);
-        }
-
-        .blob {
-            position: fixed;
-            width: 360px;
-            height: 360px;
-            border-radius: 50%;
-            filter: blur(30px);
-            opacity: 0.28;
+            pointer-events: none;
             z-index: -2;
-            animation: floatBlob 9s ease-in-out infinite alternate;
+            background:
+                linear-gradient(110deg, transparent 0 18%, rgba(100, 216, 255, 0.08) 18.2%, transparent 18.6% 100%),
+                linear-gradient(70deg, transparent 0 68%, rgba(140, 245, 206, 0.07) 68.2%, transparent 68.7% 100%);
+            opacity: 0.76;
         }
 
-        .blob.one {
-            left: -120px;
-            top: 110px;
-            background: #1d8cff;
+        a {
+            color: inherit;
+            text-decoration: none;
         }
 
-        .blob.two {
-            right: -130px;
-            bottom: 80px;
-            background: #8b5cf6;
-            animation-delay: 1.5s;
+        button {
+            font: inherit;
         }
 
-        .blob.three {
-            left: 45%;
-            top: -130px;
-            background: #00d4ff;
-            animation-delay: 2.5s;
+        .progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            width: 0;
+            z-index: 1000;
+            background: linear-gradient(90deg, var(--cyan), var(--mint), var(--violet));
+            box-shadow: 0 0 22px rgba(100, 216, 255, 0.8);
         }
 
-        @keyframes floatBlob {
-            from { transform: translate3d(0, 0, 0) scale(1); }
-            to { transform: translate3d(45px, 35px, 0) scale(1.08); }
+        #networkCanvas {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.44;
+        }
+
+        .container {
+            width: min(var(--max), calc(100% - 40px));
+            margin: 0 auto;
         }
 
         .nav {
             position: fixed;
-            top: 18px;
+            top: 16px;
             left: 50%;
             transform: translateX(-50%);
-            width: min(1180px, calc(100% - 32px));
-            min-height: 64px;
-            padding: 10px 18px;
-            border: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.62);
+            z-index: 900;
+            width: min(var(--max), calc(100% - 28px));
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 18px;
+            align-items: center;
+            min-height: 58px;
+            padding: 10px 12px 10px 16px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: rgba(5, 9, 16, 0.72);
             backdrop-filter: blur(18px);
-            border-radius: 999px;
             box-shadow: var(--shadow);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 99;
         }
 
-        body.dark .nav {
-            background: rgba(13, 27, 48, 0.68);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
+        .brand {
+            display: inline-grid;
+            grid-template-columns: 32px auto;
             gap: 10px;
-            font-weight: 800;
-            letter-spacing: 0.3px;
+            align-items: center;
+            font-weight: 750;
+            letter-spacing: 0;
             white-space: nowrap;
         }
 
-        .logo-mark {
-            width: 36px;
-            height: 36px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--primary), var(--purple));
-            color: white;
+        .brand-mark {
+            width: 32px;
+            height: 32px;
             display: grid;
             place-items: center;
-            font-weight: 900;
+            border: 1px solid var(--line-strong);
+            border-radius: 6px;
+            color: var(--cyan);
+            background: rgba(100, 216, 255, 0.08);
+            box-shadow: inset 0 0 18px rgba(100, 216, 255, 0.12);
         }
 
         .nav-links {
             display: flex;
-            align-items: center;
-            gap: 4px;
-            flex-wrap: wrap;
             justify-content: center;
+            gap: 4px;
+            min-width: 0;
         }
 
         .nav-links a {
-            text-decoration: none;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            min-height: 36px;
+            padding: 0 10px;
+            border-radius: 6px;
             color: var(--muted);
-            padding: 9px 10px;
-            border-radius: 999px;
-            font-size: 13px;
-            transition: 0.25s ease;
+            font-size: 0.9rem;
+            transition: color 180ms ease, background 180ms ease;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 10px;
+            right: 10px;
+            bottom: 5px;
+            height: 1px;
+            transform: scaleX(0);
+            transform-origin: left;
+            background: var(--cyan);
+            transition: transform 200ms ease;
         }
 
         .nav-links a:hover,
         .nav-links a.active {
-            color: white;
-            background: var(--primary);
-        }
-
-        .theme-btn {
-            background: var(--section-bg);
             color: var(--text);
-            border: 1px solid var(--border);
-            padding: 10px 14px;
-            border-radius: 999px;
-            cursor: pointer;
-            transition: transform 0.25s ease, background 0.25s ease;
-            white-space: nowrap;
+            background: rgba(100, 216, 255, 0.08);
         }
 
-        .theme-btn:hover { transform: translateY(-2px); }
-
-        .container {
-            width: min(1120px, calc(100% - 34px));
-            margin: 0 auto;
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            transform: scaleX(1);
         }
 
-        section { padding: 96px 0; }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 120px;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.12fr 0.88fr;
-            gap: 48px;
-            align-items: center;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 9px 14px;
-            border-radius: 999px;
-            border: 1px solid var(--border);
-            background: var(--card);
-            box-shadow: var(--shadow);
-            color: var(--primary-dark);
-            font-weight: 700;
-            margin-bottom: 22px;
-        }
-
-        .hero h1 {
-            font-size: clamp(42px, 6vw, 76px);
-            line-height: 1.08;
-            margin-bottom: 18px;
-            letter-spacing: -2px;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, var(--primary), var(--purple), #00bcd4);
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-        .typing {
-            min-height: 34px;
-            font-size: 22px;
-            color: var(--muted);
-            margin-bottom: 28px;
-        }
-
-        .cursor {
-            color: var(--primary);
-            animation: blink 0.8s infinite;
-        }
-
-        @keyframes blink { 50% { opacity: 0; } }
-
-        .hero-actions {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
+        .nav-cta {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            border: none;
-            text-decoration: none;
-            cursor: pointer;
-            padding: 14px 20px;
-            border-radius: 16px;
-            font-weight: 800;
-            transition: 0.25s ease;
+            min-height: 38px;
+            padding: 0 14px;
+            border: 1px solid rgba(140, 245, 206, 0.38);
+            border-radius: 6px;
+            color: var(--mint);
+            background: rgba(140, 245, 206, 0.08);
+            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+            white-space: nowrap;
         }
 
-        .btn.primary {
-            color: white;
-            background: linear-gradient(135deg, var(--primary), var(--purple));
-            box-shadow: 0 14px 28px rgba(29, 140, 255, 0.26);
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            border-color: var(--mint);
+            background: rgba(140, 245, 206, 0.13);
         }
 
-        .btn.ghost {
-            color: var(--text);
-            border: 1px solid var(--border);
-            background: var(--card);
-        }
-
-        .btn:hover { transform: translateY(-3px); }
-
-        .profile-card {
+        .hero {
             position: relative;
-            padding: 30px;
-            border-radius: 34px;
-            border: 1px solid var(--border);
-            background: var(--card);
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(18px);
-            transform-style: preserve-3d;
-            transition: transform 0.18s ease;
-        }
-
-        .photo-placeholder {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 22px;
-            border-radius: 42px;
-            display: grid;
-            place-items: center;
-            text-align: center;
-            color: white;
-            font-size: 14px;
-            font-weight: 800;
-            line-height: 1.45;
-            background:
-                linear-gradient(135deg, rgba(29,140,255,0.96), rgba(139,92,246,0.96)),
-                repeating-linear-gradient(45deg, transparent 0 10px, rgba(255,255,255,0.2) 10px 20px);
-            border: 2px dashed rgba(255,255,255,0.7);
-            box-shadow: 0 18px 45px rgba(29, 140, 255, 0.26);
-        }
-
-        .profile-card h2 {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-
-        .profile-card p {
-            text-align: center;
-            color: var(--muted);
-            line-height: 1.75;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-            margin-top: 26px;
-        }
-
-        .stat {
-            padding: 16px 10px;
-            border-radius: 20px;
-            background: var(--section-bg);
-            border: 1px solid var(--border);
-            text-align: center;
-        }
-
-        .stat strong {
-            display: block;
-            font-size: 24px;
-            color: var(--primary);
-            margin-bottom: 4px;
-        }
-
-        .stat span {
-            font-size: 13px;
-            color: var(--muted);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 46px;
-        }
-
-        .section-title span {
-            color: var(--primary);
-            font-weight: 800;
-        }
-
-        .section-title h2 {
-            font-size: clamp(32px, 4vw, 48px);
-            margin: 10px 0 12px;
-        }
-
-        .section-title p {
-            color: var(--muted);
-            line-height: 1.8;
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-        }
-
-        .two-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 22px;
-        }
-
-        .glass-card {
-            border: 1px solid var(--border);
-            background: var(--card);
-            border-radius: 26px;
-            padding: 26px;
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(18px);
-            transition: 0.28s ease;
-            position: relative;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            padding: 126px 0 70px;
             overflow: hidden;
         }
 
-        .glass-card::before {
+        .hero::after {
             content: "";
             position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at top left, rgba(29, 140, 255, 0.13), transparent 42%);
-            opacity: 0;
-            transition: 0.28s ease;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
         }
 
-        .glass-card:hover {
-            transform: translateY(-8px);
+        .hero-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 330px;
+            gap: 48px;
+            align-items: end;
         }
 
-        .glass-card:hover::before { opacity: 1; }
-
-        .glass-card > * { position: relative; }
-
-        .glass-card h3 {
-            font-size: 22px;
-            margin-bottom: 12px;
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+            color: var(--cyan);
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0;
         }
 
-        .glass-card p,
-        .glass-card li {
+        .eyebrow::before {
+            content: "";
+            width: 42px;
+            height: 1px;
+            background: var(--cyan);
+        }
+
+        h1 {
+            margin: 0;
+            max-width: 920px;
+            font-size: 4.8rem;
+            line-height: 0.98;
+            letter-spacing: 0;
+        }
+
+        .hero-title-accent {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(237, 247, 255, 0.72);
+            text-shadow: 0 0 28px rgba(100, 216, 255, 0.13);
+        }
+
+        .hero-copy {
+            max-width: 760px;
+            margin: 26px 0 0;
             color: var(--muted);
+            font-size: 1.08rem;
             line-height: 1.75;
         }
 
-        .glass-card ul {
-            padding-left: 18px;
-            margin-top: 10px;
+        .typing-line {
+            display: inline-flex;
+            min-height: 32px;
+            margin-top: 18px;
+            color: var(--mint);
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+            font-size: 0.98rem;
         }
 
-        .icon {
-            width: 54px;
-            height: 54px;
-            border-radius: 18px;
+        .cursor {
+            margin-left: 3px;
+            animation: blink 1s steps(2, start) infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0 18px;
+            border-radius: 6px;
+            border: 1px solid var(--line);
+            overflow: hidden;
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.03);
+            transition: transform 180ms ease, border-color 180ms ease, color 180ms ease, background 180ms ease;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            transform: translateX(-105%);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+            transition: transform 520ms ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            border-color: var(--line-strong);
+            background: rgba(100, 216, 255, 0.08);
+        }
+
+        .btn:hover::before {
+            transform: translateX(105%);
+        }
+
+        .btn.primary {
+            color: #031018;
+            border-color: rgba(100, 216, 255, 0.68);
+            background: linear-gradient(90deg, var(--cyan), var(--mint));
+            font-weight: 750;
+        }
+
+        .hero-panel {
+            border-left: 1px solid var(--line);
+            padding-left: 28px;
+        }
+
+        .signal-label {
+            color: var(--soft);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0;
+        }
+
+        .metric-stack {
             display: grid;
-            place-items: center;
-            font-size: 26px;
-            background: linear-gradient(135deg, rgba(29, 140, 255, 0.14), rgba(139, 92, 246, 0.16));
-            margin-bottom: 18px;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .metric {
+            position: relative;
+            min-height: 86px;
+            padding: 16px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: rgba(7, 16, 27, 0.7);
+            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+        }
+
+        .metric:hover {
+            transform: translateX(4px);
+            border-color: var(--line-strong);
+            background: rgba(12, 28, 43, 0.86);
+        }
+
+        .metric strong {
+            display: block;
+            color: var(--text);
+            font-size: 1.45rem;
+            line-height: 1;
+        }
+
+        .metric span {
+            display: block;
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.45;
+        }
+
+        section {
+            position: relative;
+            padding: 94px 0;
+            scroll-margin-top: 108px;
+        }
+
+        section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: min(var(--max), calc(100% - 40px));
+            height: 1px;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, transparent, rgba(100, 216, 255, 0.24), transparent);
+        }
+
+        .section-head {
+            display: grid;
+            grid-template-columns: 0.48fr 1fr;
+            gap: 44px;
+            align-items: end;
+            margin-bottom: 34px;
+        }
+
+        .section-kicker {
+            color: var(--cyan);
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+            font-size: 0.86rem;
+        }
+
+        h2 {
+            margin: 8px 0 0;
+            font-size: 2.25rem;
+            line-height: 1.12;
+            letter-spacing: 0;
+        }
+
+        .section-head p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.72;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 28px;
+            align-items: stretch;
+        }
+
+        .summary-box,
+        .education-box {
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--panel);
+            padding: 24px;
+        }
+
+        .summary-box p,
+        .education-box p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.78;
+        }
+
+        .education-box {
+            display: grid;
+            gap: 16px;
+        }
+
+        .edu-row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(113, 199, 255, 0.14);
+        }
+
+        .edu-row:last-child {
+            padding-bottom: 0;
+            border-bottom: 0;
+        }
+
+        .edu-row h3 {
+            margin: 0;
+            font-size: 1.05rem;
+        }
+
+        .edu-row span {
+            color: var(--muted);
+            font-size: 0.92rem;
         }
 
         .tag-row {
@@ -437,198 +482,326 @@
         }
 
         .tag {
-            font-size: 12px;
-            padding: 6px 10px;
-            border-radius: 999px;
-            color: var(--primary-dark);
-            background: rgba(29, 140, 255, 0.1);
-            border: 1px solid rgba(29, 140, 255, 0.13);
-            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            min-height: 28px;
+            padding: 0 9px;
+            border: 1px solid rgba(113, 199, 255, 0.2);
+            border-radius: 4px;
+            color: #bdd7ec;
+            background: rgba(100, 216, 255, 0.055);
+            font-size: 0.82rem;
+            transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
         }
 
-        .project-image-placeholder {
-            height: 170px;
-            border-radius: 22px;
-            border: 2px dashed rgba(29, 140, 255, 0.35);
-            background:
-                linear-gradient(135deg, rgba(29, 140, 255, 0.12), rgba(139, 92, 246, 0.12)),
-                repeating-linear-gradient(45deg, transparent 0 12px, rgba(29, 140, 255, 0.06) 12px 24px);
-            display: grid;
-            place-items: center;
-            text-align: center;
-            color: var(--primary-dark);
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
-
-        .skill-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 22px;
-        }
-
-        .skill-item {
-            border: 1px solid var(--border);
-            background: var(--card);
-            border-radius: 24px;
-            padding: 22px;
-            box-shadow: var(--shadow);
-        }
-
-        .skill-top {
-            display: flex;
-            justify-content: space-between;
-            gap: 16px;
-            margin-bottom: 12px;
-            font-weight: 800;
-        }
-
-        .bar {
-            height: 12px;
-            background: rgba(120, 142, 170, 0.18);
-            border-radius: 999px;
-            overflow: hidden;
-        }
-
-        .bar-fill {
-            height: 100%;
-            width: 0;
-            border-radius: 999px;
-            background: linear-gradient(90deg, var(--primary), var(--purple));
-            transition: width 1.2s ease;
-        }
-
-        .filters {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-
-        .filter-btn {
-            border: 1px solid var(--border);
-            background: var(--card);
+        .tag:hover {
             color: var(--text);
-            padding: 11px 16px;
-            border-radius: 999px;
-            cursor: pointer;
-            font-weight: 800;
-            transition: 0.25s ease;
+            border-color: var(--line-strong);
+            background: rgba(100, 216, 255, 0.11);
         }
-
-        .filter-btn.active,
-        .filter-btn:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        .project-card.hide { display: none; }
 
         .timeline {
             position: relative;
-            max-width: 920px;
-            margin: 0 auto;
+            display: grid;
+            gap: 18px;
         }
 
         .timeline::before {
             content: "";
             position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(var(--primary), var(--purple));
-            border-radius: 99px;
+            top: 12px;
+            bottom: 12px;
+            left: 12px;
+            width: 1px;
+            background: linear-gradient(var(--cyan), transparent);
         }
 
         .timeline-item {
-            position: relative;
-            padding-left: 62px;
-            margin-bottom: 26px;
+            display: grid;
+            grid-template-columns: 26px 1fr;
+            gap: 18px;
         }
 
-        .timeline-dot {
-            position: absolute;
-            left: 8px;
-            top: 16px;
-            width: 26px;
-            height: 26px;
+        .dot {
+            width: 25px;
+            height: 25px;
+            border: 1px solid var(--line-strong);
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--purple));
-            border: 5px solid var(--bg);
-            transition: 0.35s ease;
+            background: var(--bg);
+            box-shadow: 0 0 22px rgba(100, 216, 255, 0.25);
         }
-
-        .timeline-item:hover .timeline-dot { transform: scale(1.18); }
 
         .timeline-card {
-            border: 1px solid var(--border);
-            background: var(--card);
-            border-radius: 24px;
+            padding: 20px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: rgba(8, 17, 28, 0.76);
+            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--line-strong);
+            background: rgba(12, 25, 39, 0.94);
+        }
+
+        .timeline-top {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 16px;
+            align-items: start;
+        }
+
+        .timeline-card h3,
+        .project-card h3,
+        .pub-card h3 {
+            margin: 0;
+            font-size: 1.12rem;
+            line-height: 1.32;
+        }
+
+        .meta {
+            margin-top: 5px;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .date {
+            color: var(--cyan);
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+            font-size: 0.86rem;
+            white-space: nowrap;
+        }
+
+        .timeline-card ul,
+        .project-card ul {
+            margin: 14px 0 0;
+            padding-left: 18px;
+            color: var(--muted);
+            line-height: 1.62;
+        }
+
+        .timeline-card li,
+        .project-card li {
+            margin: 7px 0;
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .filter-btn {
+            min-height: 36px;
+            padding: 0 12px;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.03);
+            cursor: pointer;
+            transition: transform 180ms ease, border-color 180ms ease, color 180ms ease, background 180ms ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            transform: translateY(-2px);
+            color: var(--text);
+            border-color: var(--line-strong);
+            background: rgba(100, 216, 255, 0.1);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .project-card {
+            position: relative;
+            min-height: 330px;
             padding: 22px;
-            box-shadow: var(--shadow);
-            transition: 0.28s ease;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background:
+                linear-gradient(145deg, rgba(12, 26, 42, 0.9), rgba(7, 13, 23, 0.8));
+            overflow: hidden;
+            transition: transform 220ms ease, border-color 220ms ease, opacity 220ms ease, background 220ms ease;
         }
 
-        .timeline-card:hover { transform: translateX(8px); }
-
-        .timeline-card .date {
-            color: var(--primary);
-            font-weight: 800;
-            margin-bottom: 8px;
+        .project-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            transform: translateX(-101%);
+            border-radius: 8px;
+            background: linear-gradient(90deg, transparent, rgba(100, 216, 255, 0.08), transparent);
+            transition: transform 720ms ease;
         }
 
-        .timeline-card h3 { margin-bottom: 8px; }
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--line-strong);
+            background:
+                linear-gradient(145deg, rgba(17, 37, 58, 0.96), rgba(8, 16, 27, 0.94));
+        }
 
-        .timeline-card p {
+        .project-card:hover::before {
+            transform: translateX(101%);
+        }
+
+        .project-card.hide {
+            display: none;
+        }
+
+        .card-topline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .domain {
+            color: var(--cyan);
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+            font-size: 0.78rem;
+        }
+
+        .score {
+            color: var(--mint);
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+            font-size: 0.82rem;
+        }
+
+        .project-card p,
+        .pub-card p,
+        .award-card p {
+            margin: 12px 0 0;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .pub-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .pub-card {
+            display: grid;
+            grid-template-columns: 78px 1fr;
+            gap: 18px;
+            padding: 18px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: rgba(8, 17, 28, 0.76);
+            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+        }
+
+        .pub-card:hover {
+            transform: translateX(4px);
+            border-color: var(--line-strong);
+            background: rgba(12, 25, 39, 0.94);
+        }
+
+        .pub-index {
+            color: var(--soft);
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+            font-size: 0.95rem;
+        }
+
+        .status-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .status {
+            min-height: 26px;
+            padding: 4px 8px;
+            border: 1px solid rgba(113, 199, 255, 0.18);
+            border-radius: 4px;
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.03);
+            font-size: 0.78rem;
+        }
+
+        .status.hot {
+            color: var(--mint);
+            border-color: rgba(140, 245, 206, 0.34);
+            background: rgba(140, 245, 206, 0.07);
+        }
+
+        .awards-grid,
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .award-card,
+        .skill-card {
+            padding: 18px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: rgba(8, 17, 28, 0.76);
+            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+        }
+
+        .award-card:hover,
+        .skill-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--line-strong);
+            background: rgba(12, 25, 39, 0.94);
+        }
+
+        .award-card h3,
+        .skill-card h3 {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .skill-card p {
+            margin: 10px 0 0;
+            color: var(--muted);
+            line-height: 1.62;
+        }
+
+        .contact-panel {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 24px;
+            align-items: center;
+            padding: 28px;
+            border: 1px solid var(--line-strong);
+            border-radius: 8px;
+            background:
+                linear-gradient(135deg, rgba(100, 216, 255, 0.12), rgba(9, 17, 27, 0.84) 38%, rgba(140, 245, 206, 0.08));
+        }
+
+        .contact-panel h2 {
+            margin: 0;
+        }
+
+        .contact-panel p {
+            margin: 12px 0 0;
             color: var(--muted);
             line-height: 1.7;
         }
 
-        .timeline-card .meta {
-            margin-top: 8px;
-            color: var(--text);
-            font-weight: 700;
-        }
-
-        .contact-box {
-            text-align: center;
-            border: 1px solid var(--border);
-            background: var(--card);
-            box-shadow: var(--shadow);
-            border-radius: 34px;
-            padding: 46px 24px;
-        }
-
-        .contact-box h2 {
-            font-size: 38px;
-            margin-bottom: 14px;
-        }
-
-        .contact-box p {
-            color: var(--muted);
-            line-height: 1.8;
-            margin-bottom: 24px;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
         footer {
+            padding: 36px 0 46px;
+            color: var(--soft);
             text-align: center;
-            padding: 30px 0 48px;
-            color: var(--muted);
+            font-size: 0.9rem;
         }
 
         .reveal {
             opacity: 0;
-            transform: translateY(28px);
-            transition: 0.75s ease;
+            transform: translateY(18px);
+            transition: opacity 520ms ease, transform 520ms ease;
         }
 
         .reveal.show {
@@ -636,444 +809,642 @@
             transform: translateY(0);
         }
 
-        @media (max-width: 980px) {
+        @media (max-width: 1020px) {
             .nav {
-                border-radius: 24px;
-                align-items: flex-start;
-                gap: 10px;
+                grid-template-columns: 1fr auto;
             }
 
-            .nav-links { display: none; }
-            .hero-grid { grid-template-columns: 1fr; }
-            .card-grid,
-            .two-grid,
-            .skill-list { grid-template-columns: 1fr; }
-            .stats { grid-template-columns: 1fr; }
-            section { padding: 78px 0; }
+            .nav-links {
+                grid-column: 1 / -1;
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 2px;
+            }
+
+            .hero-layout,
+            .about-grid,
+            .section-head,
+            .contact-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-panel {
+                border-left: 0;
+                border-top: 1px solid var(--line);
+                padding: 22px 0 0;
+            }
+
+            h1 {
+                font-size: 3.6rem;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .container {
+                width: min(100% - 28px, var(--max));
+            }
+
+            .nav {
+                top: 10px;
+                width: calc(100% - 20px);
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                min-height: 0;
+                padding: 8px;
+            }
+
+            .brand span {
+                display: inline;
+                font-size: 0.9rem;
+            }
+
+            .nav-cta {
+                margin-left: auto;
+                min-height: 34px;
+                padding: 0 10px;
+                font-size: 0.84rem;
+            }
+
+            .nav-links {
+                order: 3;
+                width: 100%;
+                gap: 2px;
+                justify-content: flex-start;
+                overflow-x: auto;
+            }
+
+            .nav-links a {
+                flex: 0 0 auto;
+                min-height: 30px;
+                padding: 0 8px;
+                font-size: 0.82rem;
+            }
+
+            .hero {
+                min-height: 88vh;
+                padding-top: 150px;
+            }
+
+            h1 {
+                font-size: 2.72rem;
+                line-height: 1.05;
+            }
+
+            .hero-copy {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 72px 0;
+                scroll-margin-top: 136px;
+            }
+
+            .project-grid,
+            .awards-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-top,
+            .edu-row,
+            .pub-card {
+                grid-template-columns: 1fr;
+            }
+
+            .date {
+                white-space: normal;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
-
 <body>
-    <canvas id="particleCanvas"></canvas>
-    <div class="blob one"></div>
-    <div class="blob two"></div>
-    <div class="blob three"></div>
+    <div class="progress" id="progress"></div>
+    <canvas id="networkCanvas" aria-hidden="true"></canvas>
 
-    <nav class="nav">
-        <div class="logo">
-            <div class="logo-mark">Z</div>
+    <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#home" aria-label="Zidu Zhang homepage">
+            <span class="brand-mark">Z</span>
             <span>Zidu Zhang</span>
-        </div>
-
+        </a>
         <div class="nav-links">
-            <a href="#home" class="active">Home</a>
             <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
             <a href="#experience">Experience</a>
-            <a href="#papers">Publications</a>
+            <a href="#projects">Projects</a>
+            <a href="#publications">Publications</a>
             <a href="#awards">Awards</a>
-            <a href="#contact">Contact</a>
+            <a href="#skills">Skills</a>
         </div>
-
-        <button class="theme-btn" id="themeBtn">Dark Mode</button>
+        <a class="nav-cta" href="https://github.com/handsomemartin2005" target="_blank" rel="noreferrer">GitHub</a>
     </nav>
 
     <main>
-        <!-- ===================== EDITABLE CONTENT: HOME ===================== -->
         <section class="hero" id="home">
-            <div class="container hero-grid">
+            <div class="container hero-layout">
                 <div class="reveal">
-                    <div class="badge">Computer Science · Computer Vision · Software Engineering</div>
-                    <h1>
-                        Hi, I am<br />
-                        <span class="gradient-text">Zidu Zhang</span>
-                    </h1>
-                    <div class="typing">
+                    <div class="eyebrow">PhD applicant portfolio</div>
+                    <h1>Zidu Zhang<br><span class="hero-title-accent">builds AI systems.</span></h1>
+                    <p class="hero-copy">
+                        Computer Science undergraduate at Beijing University of Technology working across computer vision,
+                        multimodal forecasting, graph and hypergraph learning, LLM agents, and intelligent infrastructure systems.
+                    </p>
+                    <div class="typing-line">
                         <span id="typingText"></span><span class="cursor">|</span>
                     </div>
-                    <div class="hero-actions">
-                        <a class="btn primary" href="#projects">View My Projects</a>
-                        <a class="btn ghost" href="https://github.com/handsomemartin2005" target="_blank">Visit GitHub</a>
+                    <div class="actions">
+                        <a class="btn primary" href="#projects">View Projects</a>
+                        <a class="btn" href="#publications">Read Publications</a>
+                        <a class="btn" href="assets/zidu_zhang_phd_cv.pdf" target="_blank" rel="noreferrer">Download CV</a>
                     </div>
                 </div>
 
-                <div class="profile-card reveal" id="tiltCard">
-                    <div class="photo-placeholder">
-                        Profile Photo<br />Placeholder
-                    </div>
-                    <h2>Computer Science Student</h2>
-                    <p>
-                        I currently focus on computer vision and software engineering,
-                        with a strong interest in data science and large language models.
-                    </p>
-
-                    <div class="stats">
-                        <div class="stat">
-                            <strong>BJUT</strong>
-                            <span>Computer Science</span>
+                <aside class="hero-panel reveal" aria-label="Research highlights">
+                    <div class="signal-label">Research signal</div>
+                    <div class="metric-stack">
+                        <div class="metric">
+                            <strong>9</strong>
+                            <span>research systems spanning vision, forecasting, OMR, UAV detection, energy, and traffic intelligence.</span>
                         </div>
-                        <div class="stat">
-                            <strong>3</strong>
-                            <span>Research Works</span>
-                        </div>
-                        <div class="stat">
+                        <div class="metric">
                             <strong>6</strong>
-                            <span>Awards & Honors</span>
+                            <span>published, submitted, or planned manuscripts with venue status and ranking labels where available.</span>
+                        </div>
+                        <div class="metric">
+                            <strong>100K+</strong>
+                            <span>trainable samples built for multimodal load forecasting and intelligent analysis workflows.</span>
+                        </div>
+                        <div class="metric">
+                            <strong>40K+</strong>
+                            <span>power-metering records collected for knowledge graph construction and fault diagnosis.</span>
                         </div>
                     </div>
-                </div>
+                </aside>
             </div>
         </section>
 
-        <!-- ===================== EDITABLE CONTENT: ABOUT ===================== -->
         <section id="about">
             <div class="container">
-                <div class="section-title reveal">
-                    <span>ABOUT ME</span>
-                    <h2>Personal Introduction</h2>
-                    <p>My academic background, research interests, and current development direction.</p>
+                <div class="section-head reveal">
+                    <div>
+                        <div class="section-kicker">01 / ABOUT</div>
+                        <h2>Cold, precise, research-first.</h2>
+                    </div>
+                    <p>
+                        I focus on building reproducible AI systems that connect algorithm design, data engineering,
+                        model evaluation, and deployable application workflows.
+                    </p>
                 </div>
 
-                <div class="card-grid">
-                    <div class="glass-card reveal">
-                        <div class="icon">🎓</div>
-                        <h3>Education</h3>
+                <div class="about-grid">
+                    <div class="summary-box reveal">
                         <p>
-                            Beijing University of Technology (211 / Double First-Class),
-                            Bachelor student in Computer Science and Technology, 2023.09 - Present.
+                            My current work centers on small-object detection, industrial defect inspection, OMR structure
+                            reconstruction, multimodal influenza early warning, and energy-system forecasting. I enjoy
+                            turning messy real-world data into model-ready pipelines and measurable research outcomes.
                         </p>
                         <div class="tag-row">
-                            <span class="tag">Digital Image Processing: 96</span>
-                            <span class="tag">Algorithm Design: 93</span>
-                            <span class="tag">Data Structures</span>
-                            <span class="tag">Computer Networks</span>
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">Multimodal AI</span>
+                            <span class="tag">Hypergraph Learning</span>
+                            <span class="tag">LLM Agents</span>
+                            <span class="tag">Time-Series Forecasting</span>
                         </div>
                     </div>
 
-                    <div class="glass-card reveal">
-                        <div class="icon">🔬</div>
-                        <h3>Research Interests</h3>
-                        <p>
-                            My interests include computer vision, small-defect detection, multimodal learning,
-                            LLM applications, data science, and empirical studies of open-source software.
-                        </p>
-                    </div>
-
-                    <div class="glass-card reveal">
-                        <div class="icon">🚀</div>
-                        <h3>Self Evaluation</h3>
-                        <p>
-                            I have a solid foundation in computer science and hands-on research experience.
-                            I can independently conduct data processing, model development, experimental analysis,
-                            and system implementation.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===================== EDITABLE CONTENT: SKILLS ===================== -->
-        <section id="skills">
-            <div class="container">
-                <div class="section-title reveal">
-                    <span>SKILLS</span>
-                    <h2>Technical Skills</h2>
-                    <p>Core skills summarized from my research, projects, and engineering experience.</p>
-                </div>
-
-                <div class="skill-list">
-                    <div class="skill-item reveal">
-                        <div class="skill-top">
-                            <span>Python / Data Processing / Pandas / NumPy</span>
-                            <span>90%</span>
+                    <div class="education-box reveal">
+                        <div class="edu-row">
+                            <div>
+                                <h3>Beijing University of Technology</h3>
+                                <p>B.Eng. in Computer Science and Technology, expected</p>
+                            </div>
+                            <span>Sep. 2023 - Jun. 2027</span>
                         </div>
-                        <div class="bar"><div class="bar-fill" data-width="90%"></div></div>
-                    </div>
-
-                    <div class="skill-item reveal">
-                        <div class="skill-top">
-                            <span>YOLOv8 / Object Detection / Computer Vision</span>
-                            <span>88%</span>
+                        <div class="edu-row">
+                            <div>
+                                <h3>GPA</h3>
+                                <p>3.2 / 4.0</p>
+                            </div>
+                            <span>Current</span>
                         </div>
-                        <div class="bar"><div class="bar-fill" data-width="88%"></div></div>
-                    </div>
-
-                    <div class="skill-item reveal">
-                        <div class="skill-top">
-                            <span>PyTorch / Transformer / ViT / BERT</span>
-                            <span>84%</span>
-                        </div>
-                        <div class="bar"><div class="bar-fill" data-width="84%"></div></div>
-                    </div>
-
-                    <div class="skill-item reveal">
-                        <div class="skill-top">
-                            <span>LLM / SFT / Prompt Engineering / Multi-Agent</span>
-                            <span>82%</span>
-                        </div>
-                        <div class="bar"><div class="bar-fill" data-width="82%"></div></div>
-                    </div>
-
-                    <div class="skill-item reveal">
-                        <div class="skill-top">
-                            <span>Flask / Jinja2 / Neo4j / Backend Engineering</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="bar"><div class="bar-fill" data-width="80%"></div></div>
-                    </div>
-
-                    <div class="skill-item reveal">
-                        <div class="skill-top">
-                            <span>C/C++ / R / MATLAB / Linux / Git</span>
-                            <span>78%</span>
-                        </div>
-                        <div class="bar"><div class="bar-fill" data-width="78%"></div></div>
-                    </div>
-
-                    <div class="skill-item reveal">
-                        <div class="skill-top">
-                            <span>Academic English Reading and Writing</span>
-                            <span>86%</span>
-                        </div>
-                        <div class="bar"><div class="bar-fill" data-width="86%"></div></div>
-                    </div>
-
-                    <div class="skill-item reveal">
-                        <div class="skill-top">
-                            <span>CET-4: 596 / CET-6: 513 / TOEFL Writing: 4.5/6</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="bar"><div class="bar-fill" data-width="85%"></div></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===================== EDITABLE CONTENT: PROJECTS ===================== -->
-        <section id="projects">
-            <div class="container">
-                <div class="section-title reveal">
-                    <span>PROJECTS</span>
-                    <h2>Selected Projects</h2>
-                    <p>Project experience in LLM applications, computer vision, multimodal learning, and data-driven systems.</p>
-                </div>
-
-                <div class="filters reveal">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="llm">LLM Application</button>
-                    <button class="filter-btn" data-filter="vision">Computer Vision</button>
-                    <button class="filter-btn" data-filter="forecasting">Forecasting</button>
-                    <button class="filter-btn" data-filter="data">Data Engineering</button>
-                </div>
-
-                <div class="two-grid">
-                    <div class="glass-card project-card reveal" data-category="llm vision data">
-                        <div class="project-image-placeholder">Project Image Placeholder<br />Metering System / PowerKG / MeterAgent</div>
-                        <div class="icon">⚡</div>
-                        <h3>LLM-based Reliability and Intelligent O&M Optimization for Power Metering Systems</h3>
-                        <p><strong>Role:</strong> Core Member</p>
-                        <ul>
-                            <li>Collected 40,000+ records of metering device models, suppliers, and fault information using Selenium from industrial and technical platforms.</li>
-                            <li>Used YOLOv8 to locate meter dial regions and extract nameplate or panel text, achieving 97%+ dial-region detection accuracy in the sample test set.</li>
-                            <li>Built structured LLM-readable inputs and improved effective OCR recognition by about 15%.</li>
-                            <li>Collaborated on a Flask + Jinja2 + Neo4j pipeline for PowerKG, constructing tens of thousands of entity-relation records.</li>
-                            <li>Designed MeterAgent for metering-device fault analysis and diagnosis, and contributed to a paper submission and a utility-model patent application.</li>
-                        </ul>
-                        <div class="tag-row">
-                            <span class="tag">Selenium</span>
-                            <span class="tag">YOLOv8</span>
-                            <span class="tag">OCR</span>
-                            <span class="tag">Flask</span>
-                            <span class="tag">Jinja2</span>
-                            <span class="tag">Neo4j</span>
-                            <span class="tag">LLM</span>
-                            <span class="tag">MeterAgent</span>
-                        </div>
-                    </div>
-
-                    <div class="glass-card project-card reveal" data-category="forecasting data llm">
-                        <div class="project-image-placeholder">Project Image Placeholder<br />Multimodal Load Forecasting / Agent Analysis</div>
-                        <div class="icon">📈</div>
-                        <h3>Multimodal Load Forecasting and Intelligent Analysis for Proxy Electricity Purchasing</h3>
-                        <p><strong>Role:</strong> Technical Lead of the Trading Curve Forecasting Module</p>
-                        <ul>
-                            <li>Built a pandas + NumPy data-processing pipeline for load, weather, text, and multimodal data cleaning.</li>
-                            <li>Handled anomaly detection, missing-value repair, and time-granularity alignment, forming 100,000+ trainable samples.</li>
-                            <li>Developed a PyTorch + Transformer + ViT + BERT multimodal forecasting model for time-series, image, and text feature fusion.</li>
-                            <li>Reduced forecasting errors by approximately 15%-64% compared with single time-series baselines in sample experiments.</li>
-                            <li>Integrated LLM + Agno Multi-Agents + SHAP for event extraction, anomaly attribution, forecast correction, and explainable analysis.</li>
-                        </ul>
-                        <div class="tag-row">
-                            <span class="tag">Pandas</span>
-                            <span class="tag">NumPy</span>
-                            <span class="tag">PyTorch</span>
-                            <span class="tag">Transformer</span>
-                            <span class="tag">ViT</span>
-                            <span class="tag">BERT</span>
-                            <span class="tag">LLM</span>
-                            <span class="tag">SHAP</span>
+                        <div class="edu-row">
+                            <div>
+                                <h3>Research direction</h3>
+                                <p>Computer vision, multimodal learning, graph/hypergraph modeling, LLM agents, and forecasting.</p>
+                            </div>
+                            <span>PhD track</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===================== EDITABLE CONTENT: EXPERIENCE ===================== -->
         <section id="experience">
             <div class="container">
-                <div class="section-title reveal">
-                    <span>EXPERIENCE</span>
-                    <h2>Internship Experience</h2>
-                    <p>Research and engineering practice in enterprise-oriented energy internet projects.</p>
+                <div class="section-head reveal">
+                    <div>
+                        <div class="section-kicker">02 / EXPERIENCE</div>
+                        <h2>Research roles with measurable output.</h2>
+                    </div>
+                    <p>
+                        Recent work combines academic collaboration, field research, data construction, and prototype systems.
+                    </p>
                 </div>
 
                 <div class="timeline">
                     <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
+                        <div class="dot"></div>
                         <div class="timeline-card">
-                            <div class="date">2025.07 - Present</div>
-                            <h3>North China Energy Internet Research Institute</h3>
-                            <div class="meta">Research Assistant</div>
-                            <p>
-                                Participated in multiple enterprise research projects, mainly responsible for time-series data analysis,
-                                proxy electricity load forecasting, and algorithmic support. Conducted data processing, modeling analysis,
-                                and experimental validation.
-                            </p>
-                            <p>
-                                Also participated in field research on proxy electricity purchasing workflows, load-formation mechanisms,
-                                and data-collection methods, and iteratively optimized feature design, analysis logic, and forecasting schemes.
-                            </p>
+                            <div class="timeline-top">
+                                <div>
+                                    <h3>Summer Research Intern</h3>
+                                    <div class="meta">University of Virginia - United States</div>
+                                </div>
+                                <div class="date">Jun. 2026 - Aug. 2026</div>
+                            </div>
+                            <ul>
+                                <li>Built a state-level influenza early-warning data loop from CDC FluView/ILINet, lab positivity, CDC reports, Google Trends, NASA/NOAA weather, hospitalization, wastewater, and holiday signals.</li>
+                                <li>Designed ReLiEF-HGDiff v3.1 with release-aware hypergraphs, reliability learning, trend filtering, quantile decoding, and spatial tree calibration.</li>
+                                <li>Reached 0.6477 percent ILI MAE and improved surge recall from 0.4477 to 0.5891 in held-out testing.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <div class="dot"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-top">
+                                <div>
+                                    <h3>Research Assistant</h3>
+                                    <div class="meta">North China Energy Internet Research Institute - China</div>
+                                </div>
+                                <div class="date">Jul. 2025 - Jul. 2026</div>
+                            </div>
+                            <ul>
+                                <li>Developed a multi-source time-series pipeline for agency power-purchase load forecasting with anomaly detection, missing-value repair, temporal alignment, and 100,000+ trainable samples.</li>
+                                <li>Converted field research on power-purchase workflows and load-formation mechanisms into feature engineering and model adaptation plans.</li>
+                                <li>Integrated LLM agents and SHAP-based analysis for event extraction, abnormal-load attribution, and forecast correction.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===================== EDITABLE CONTENT: PUBLICATIONS ===================== -->
-        <section id="papers">
+        <section id="projects">
             <div class="container">
-                <div class="section-title reveal">
-                    <span>PUBLICATIONS</span>
-                    <h2>Research Outcomes</h2>
-                    <p>Published, submitted, and ongoing research works.</p>
+                <div class="section-head reveal">
+                    <div>
+                        <div class="section-kicker">03 / PROJECTS</div>
+                        <h2>Selected systems and experiments.</h2>
+                    </div>
+                    <p>
+                        Each project emphasizes the same logic: define the task, build the data path, design the model,
+                        compare baselines, and make the result interpretable.
+                    </p>
                 </div>
 
-                <div class="timeline">
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-card">
-                            <div class="date">ICPECA 2026</div>
-                            <h3>YOLO-ARC: Deployment-Ready and Robust Small-Defect Detection for Industrial Surfaces</h3>
-                            <div class="meta">Zidu Zhang, Ruidi Liu, Xinyi Chen</div>
-                            <p>Published at ICPECA 2026, an EI-indexed conference.</p>
-                        </div>
-                    </div>
+                <div class="filters reveal" aria-label="Project filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="vision">Vision</button>
+                    <button class="filter-btn" data-filter="forecasting">Forecasting</button>
+                    <button class="filter-btn" data-filter="llm">LLM Agents</button>
+                    <button class="filter-btn" data-filter="systems">Systems</button>
+                </div>
 
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-card">
-                            <div class="date">Under Review · ESEM 2026</div>
-                            <h3>Echoes of Change: A Large-Scale Empirical Study of LLM Integration in Open-Source Software</h3>
-                            <div class="meta">Zidu Zhang, Jialiang Dong</div>
-                            <p>Submitted to ESEM 2026, a CCF-B conference.</p>
+                <div class="project-grid">
+                    <article class="project-card reveal" data-domain="forecasting llm systems">
+                        <div class="card-topline">
+                            <span class="domain">forecasting / health AI</span>
+                            <span class="score">MAE 0.6477</span>
                         </div>
-                    </div>
+                        <h3>ReLiEF-HGDiff: multimodal influenza early warning</h3>
+                        <p>Release-aware hypergraph learning for as-of state-week surveillance under reporting lag.</p>
+                        <ul>
+                            <li>Aligned CDC, Google Trends, weather, hospitalization, wastewater, and holiday signals for 1-8 week prediction.</li>
+                            <li>Improved surge recall from 0.4477 to 0.5891 while preserving competitive MAE.</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span class="tag">Hypergraph</span>
+                            <span class="tag">Quantile Decoder</span>
+                            <span class="tag">Backtesting</span>
+                        </div>
+                    </article>
 
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-card">
-                            <div class="date">Under Review · Applied Energy</div>
-                            <h3>RMPF-Orion: Proxy Electricity Load Forecasting with Robust Temporal Modeling and Multimodal Learning</h3>
-                            <div class="meta">Zidu Zhang, Yu Min, Zhihan Su</div>
-                            <p>Submitted to Applied Energy, a SCI Q1 top journal.</p>
+                    <article class="project-card reveal" data-domain="forecasting llm systems">
+                        <div class="card-topline">
+                            <span class="domain">energy / multimodal AI</span>
+                            <span class="score">100K+ samples</span>
                         </div>
-                    </div>
+                        <h3>Agency power-purchase multimodal load forecasting</h3>
+                        <p>Cross-modal forecasting and intelligent analysis for transaction-curve prediction.</p>
+                        <ul>
+                            <li>Built load, weather, and text pipelines with pandas, NumPy, PyTorch, Transformer, ViT, and BERT.</li>
+                            <li>Used LLM agents and SHAP for event extraction, anomaly attribution, and forecast correction.</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">Transformer</span>
+                            <span class="tag">SHAP</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-domain="llm vision systems">
+                        <div class="card-topline">
+                            <span class="domain">power systems / LLM</span>
+                            <span class="score">97%+ detection</span>
+                        </div>
+                        <h3>PowerKG and MeterAgent for metering reliability</h3>
+                        <p>Knowledge graph and LLM-based fault diagnosis workflow for power metering equipment.</p>
+                        <ul>
+                            <li>Collected 40,000+ device, vendor, and fault records from industrial web sources.</li>
+                            <li>Implemented YOLOv8 + OCR meter-panel recognition and Neo4j-based entity/relation ingestion.</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span class="tag">YOLOv8</span>
+                            <span class="tag">OCR</span>
+                            <span class="tag">Neo4j</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-domain="vision">
+                        <div class="card-topline">
+                            <span class="domain">industrial vision</span>
+                            <span class="score">79.9 AP50</span>
+                        </div>
+                        <h3>HGDefect-YOLO for industrial surface defects</h3>
+                        <p>Small, low-contrast defect detection with peak-preserving attention and high-order feature fusion.</p>
+                        <ul>
+                            <li>Proposed PPAP-EMA, KDE-guided Hypergraph Neck, and RGCU-CLAG for edge-texture recovery.</li>
+                            <li>Reached 0.459 AP50:95 on NEU-DET with 5.62M parameters and 14.85 GFLOPs.</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span class="tag">YOLO</span>
+                            <span class="tag">Hypergraph Neck</span>
+                            <span class="tag">NEU-DET</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-domain="vision systems">
+                        <div class="card-topline">
+                            <span class="domain">document AI / OMR</span>
+                            <span class="score">81 classes</span>
+                        </div>
+                        <h3>GeoMask-OMR for piano score reconstruction</h3>
+                        <p>Staff-aware symbol recognition and structural MusicXML reconstruction for complex piano score images.</p>
+                        <ul>
+                            <li>Combined OpenCV, DEIM-D-FINE, SAM2, DINOv2, and RapidOCR into a hybrid detection and geometry pipeline.</li>
+                            <li>Built 81-class DeepScores data with about 872,000 training annotations and 240,000 validation annotations.</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span class="tag">SAM2</span>
+                            <span class="tag">DINOv2</span>
+                            <span class="tag">MusicXML</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-domain="vision">
+                        <div class="card-topline">
+                            <span class="domain">UAV detection</span>
+                            <span class="score">51.60 mAP50-95</span>
+                        </div>
+                        <h3>SCH-MDETR for micro UAV visible detection</h3>
+                        <p>Scale-adaptive CLIP-guided hypergraph reasoning for weak-texture small-object detection.</p>
+                        <ul>
+                            <li>Built Det-Fly train/validation/test splits of 10,616/1,326/1,329 and converted VOC XML to YOLO/COCO.</li>
+                            <li>Improved RT-DETR-R18-N mAP50-95 by 1.72 percentage points with dynamic scale routing and UHR.</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span class="tag">RT-DETR</span>
+                            <span class="tag">CLIP</span>
+                            <span class="tag">UHR</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-domain="forecasting systems">
+                        <div class="card-topline">
+                            <span class="domain">smart charging</span>
+                            <span class="score">platform plan</span>
+                        </div>
+                        <h3>AI-driven dynamic tiering for charging stations</h3>
+                        <p>Demand forecasting, collaborative operation, dynamic grading, and platform visualization.</p>
+                        <ul>
+                            <li>Modeled order, location, traffic, weather, holiday, functional-zone, and grid-load signals.</li>
+                            <li>Designed strategy recommendation, warning work order, user navigation, and multi-agent dispatch flows.</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span class="tag">Dynamic Pricing</span>
+                            <span class="tag">Multi-Agent</span>
+                            <span class="tag">Operations</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-domain="vision systems llm">
+                        <div class="card-topline">
+                            <span class="domain">traffic intelligence</span>
+                            <span class="score">full chain</span>
+                        </div>
+                        <h3>Vehicle violation governance police system</h3>
+                        <p>Edge-cloud anomaly perception and structured evidence construction for traffic enforcement.</p>
+                        <ul>
+                            <li>Designed YOLO + VLM + CRNN workflows for violation clip capture and vehicle/license-plate localization.</li>
+                            <li>Integrated ReID, CLIP, checkpoint trajectories, spatiotemporal graphs, and clustering analysis.</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span class="tag">VLM</span>
+                            <span class="tag">ReID</span>
+                            <span class="tag">CLIP</span>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- ===================== EDITABLE CONTENT: AWARDS ===================== -->
+        <section id="publications">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <div class="section-kicker">04 / PUBLICATIONS</div>
+                        <h2>Publications and manuscripts.</h2>
+                    </div>
+                    <p>
+                        Citation style is kept consistent and my name is highlighted. Ratings are shown only where available.
+                    </p>
+                </div>
+
+                <div class="pub-list">
+                    <article class="pub-card reveal">
+                        <div class="pub-index">[01]</div>
+                        <div>
+                            <h3><strong>Zidu Zhang</strong>, Ruidi Liu, and Xinyi Chen. YOLO-ARC: Deployment-Ready and Robust Small-Defect Detection for Industrial Surfaces.</h3>
+                            <p><em>ICPECA 2026</em>. Published, EI-indexed conference.</p>
+                            <div class="status-row">
+                                <span class="status hot">Published</span>
+                                <span class="status">EI indexed</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="pub-card reveal">
+                        <div class="pub-index">[02]</div>
+                        <div>
+                            <h3><strong>Zidu Zhang</strong>, Mengfei Xiao, Zelin Li, Jialiang Dong, Zhitao Guan, Willy Susilo, and Siqi Ma. Echoes of Change: A Large-Scale Empirical Study of LLM Integration in Open-Source Software.</h3>
+                            <p>Submitted to <em>ESEM 2026</em>.</p>
+                            <div class="status-row">
+                                <span class="status hot">Under review</span>
+                                <span class="status">CCF-B</span>
+                                <span class="status">CORE A</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="pub-card reveal">
+                        <div class="pub-index">[03]</div>
+                        <div>
+                            <h3><strong>Zidu Zhang</strong>, Rui Jiang, Ximai Duan, Zihan Gao, Mengfei Xiao, and Xuan Li. HGDefect-YOLO: Peak-Preserving High-Order Feature Learning for Industrial Surface Defect Detection.</h3>
+                            <p>Submitted to <em>BMVC 2026</em>.</p>
+                            <div class="status-row">
+                                <span class="status hot">Under review</span>
+                                <span class="status">CCF-C</span>
+                                <span class="status">CORE A</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="pub-card reveal">
+                        <div class="pub-index">[04]</div>
+                        <div>
+                            <h3><strong>Zidu Zhang</strong>, et al. SCH-MDETR: Scale-Adaptive CLIP-Guided Hypergraph Mamba-DETR for UAV Detection.</h3>
+                            <p>Submitted to <em>ACCV 2026</em>.</p>
+                            <div class="status-row">
+                                <span class="status hot">Under review</span>
+                                <span class="status">CCF-C</span>
+                                <span class="status">CORE B</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="pub-card reveal">
+                        <div class="pub-index">[05]</div>
+                        <div>
+                            <h3><strong>Zidu Zhang</strong>, et al. ReLiEF: Release-Aware Hypergraph Learning for As-Of Multimodal Influenza Early Warning.</h3>
+                            <p>Planned submission to <em>AAAI 2027</em>.</p>
+                            <div class="status-row">
+                                <span class="status hot">In preparation</span>
+                                <span class="status">CCF-A</span>
+                                <span class="status">CORE A*</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="pub-card reveal">
+                        <div class="pub-index">[06]</div>
+                        <div>
+                            <h3><strong>Zidu Zhang</strong>, et al. GeoMask-OMR: Staff-Aware Neural Symbol Recognition and Structural Reconstruction for Complex Piano Score Images.</h3>
+                            <p>Planned submission to <em>AAAI 2027</em>.</p>
+                            <div class="status-row">
+                                <span class="status hot">In preparation</span>
+                                <span class="status">CCF-A</span>
+                                <span class="status">CORE A*</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <section id="awards">
             <div class="container">
-                <div class="section-title reveal">
-                    <span>AWARDS</span>
-                    <h2>Awards and Honors</h2>
-                    <p>Competition awards, innovation honors, and academic project achievements.</p>
+                <div class="section-head reveal">
+                    <div>
+                        <div class="section-kicker">05 / HONORS</div>
+                        <h2>Awards and competitive work.</h2>
+                    </div>
+                    <p>
+                        Selected honors from academic creativity, robotics, entrepreneurship, and mathematical modeling competitions.
+                    </p>
                 </div>
 
-                <div class="timeline">
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-card">
-                            <div class="date">2025</div>
-                            <h3>The 12th National College Student Energy Economics Academic Creativity Competition</h3>
-                            <p>Provincial First Prize, nominated for national award.</p>
-                        </div>
+                <div class="awards-grid">
+                    <div class="award-card reveal">
+                        <h3>National Second Prize</h3>
+                        <p>12th National Undergraduate Energy Economics Academic Creativity Competition, 2025.</p>
                     </div>
-
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-card">
-                            <div class="date">2025</div>
-                            <h3>Higher Education Press Cup National Undergraduate Mathematical Contest in Modeling</h3>
-                            <p>Provincial Second Prize.</p>
-                        </div>
+                    <div class="award-card reveal">
+                        <h3>National Second Prize</h3>
+                        <p>RAICOM Robotics Developer Competition.</p>
                     </div>
-
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-card">
-                            <div class="date">2025</div>
-                            <h3>The 11th "Dingxin Cup" Student Entrepreneurship Plan Competition, BJUT</h3>
-                            <p>Silver Award.</p>
-                        </div>
+                    <div class="award-card reveal">
+                        <h3>Beijing Special Prize</h3>
+                        <p>"Youth Innovation Beijing" 2026 Challenge Cup Capital University Student Entrepreneurship Plan Competition.</p>
                     </div>
-
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-card">
-                            <div class="date">2025</div>
-                            <h3>China International College Students' Innovation Competition</h3>
-                            <p>Provincial Second Prize.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-card">
-                            <div class="date">2025</div>
-                            <h3>RAICOM Robot Developer Competition</h3>
-                            <p>Provincial Third Prize.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item reveal">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-card">
-                            <div class="date">BJUT</div>
-                            <h3>Innovation and Entrepreneurship Project</h3>
-                            <p>Innovation and Entrepreneurship Award.</p>
-                        </div>
+                    <div class="award-card reveal">
+                        <h3>Beijing Second Prize</h3>
+                        <p>Higher Education Press Cup National Undergraduate Mathematical Contest in Modeling, 2025.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===================== EDITABLE CONTENT: CONTACT ===================== -->
+        <section id="skills">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <div class="section-kicker">06 / STACK</div>
+                        <h2>Research and engineering stack.</h2>
+                    </div>
+                    <p>
+                        Skills are grouped by how they appear in the research workflow, from modeling to deployment.
+                    </p>
+                </div>
+
+                <div class="skills-grid">
+                    <div class="skill-card reveal">
+                        <h3>Algorithms and models</h3>
+                        <p>YOLO series, image classification and segmentation, OCR, multimodal learning, Transformer, graph and hypergraph modeling, time-series forecasting, reinforcement learning, and PyTorch training.</p>
+                    </div>
+                    <div class="skill-card reveal">
+                        <h3>LLMs and agents</h3>
+                        <p>SFT/RLHF, prompt engineering, RAG, multi-agent systems, event extraction, result optimization, intelligent analysis, ViT, Stable Diffusion, and MLLMs.</p>
+                    </div>
+                    <div class="skill-card reveal">
+                        <h3>Engineering tools</h3>
+                        <p>Python, C/C++, R, MATLAB, Linux, Git, Docker, Pandas, NumPy, Flask, Jinja2, Neo4j, distributed training, and model deployment.</p>
+                    </div>
+                    <div class="skill-card reveal">
+                        <h3>Competitions</h3>
+                        <p>ACM/ICPC and Kaggle-style algorithmic problem solving with experience translating algorithms into engineering systems.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="contact">
             <div class="container">
-                <div class="contact-box reveal">
-                    <h2>Contact</h2>
-                    <p>
-                        I welcome academic communication, project collaboration, and technical discussions.
-                        My phone number is not displayed here by default to avoid public exposure on the website.
-                    </p>
-                    <div class="contact-links">
-                        <a class="btn primary" href="mailto:handsomemartin@emails.bjut.edu.cn">Email Me</a>
-                        <a class="btn ghost" href="https://github.com/handsomemartin2005" target="_blank">GitHub Profile</a>
-                        <a class="btn ghost" href="#home">Back to Top</a>
+                <div class="contact-panel reveal">
+                    <div>
+                        <h2>Open to research conversations.</h2>
+                        <p>
+                            I welcome discussions on computer vision, multimodal learning, LLM agents, intelligent energy systems,
+                            and PhD research opportunities.
+                        </p>
+                    </div>
+                    <div class="actions">
+                        <a class="btn primary" href="mailto:handsomemartin@emails.bjut.edu.cn">Email</a>
+                        <a class="btn" href="https://github.com/handsomemartin2005" target="_blank" rel="noreferrer">GitHub</a>
                     </div>
                 </div>
             </div>
@@ -1081,26 +1452,16 @@
     </main>
 
     <footer>
-        © 2026 Zidu Zhang · Powered by GitHub Pages
+        &copy; 2026 Zidu Zhang. Built for GitHub Pages.
     </footer>
 
     <script>
-        // ===================== EDITABLE CONTENT: TYPING WORDS =====================
         const words = [
-            "Computer Vision Learner",
-            "Software Engineering Practitioner",
-            "Data Science Enthusiast",
-            "Large Language Model Explorer",
-            "AI Project Builder"
+            "vision models for small, weak, and structured targets",
+            "multimodal forecasting under real-world delay",
+            "LLM agents for diagnosis and explainable analysis",
+            "research code that survives baselines and ablations"
         ];
-
-        const body = document.body;
-        const themeBtn = document.getElementById("themeBtn");
-
-        themeBtn.addEventListener("click", () => {
-            body.classList.toggle("dark");
-            themeBtn.textContent = body.classList.contains("dark") ? "Light Mode" : "Dark Mode";
-        });
 
         const typingText = document.getElementById("typingText");
         let wordIndex = 0;
@@ -1109,161 +1470,135 @@
 
         function typeLoop() {
             const current = words[wordIndex];
-
             if (!deleting) {
                 typingText.textContent = current.slice(0, charIndex + 1);
-                charIndex++;
-
+                charIndex += 1;
                 if (charIndex === current.length) {
                     deleting = true;
-                    setTimeout(typeLoop, 1200);
+                    setTimeout(typeLoop, 1150);
                     return;
                 }
             } else {
                 typingText.textContent = current.slice(0, charIndex - 1);
-                charIndex--;
-
+                charIndex -= 1;
                 if (charIndex === 0) {
                     deleting = false;
                     wordIndex = (wordIndex + 1) % words.length;
                 }
             }
-
-            setTimeout(typeLoop, deleting ? 55 : 95);
+            setTimeout(typeLoop, deleting ? 34 : 58);
         }
 
         typeLoop();
 
         const revealItems = document.querySelectorAll(".reveal");
-
-        const observer = new IntersectionObserver((entries) => {
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add("show");
-
-                    if (entry.target.classList.contains("skill-item")) {
-                        const fill = entry.target.querySelector(".bar-fill");
-                        if (fill) {
-                            fill.style.width = fill.dataset.width;
-                        }
-                    }
+                    revealObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.16 });
+        }, { threshold: 0.14 });
+        revealItems.forEach((item) => revealObserver.observe(item));
 
-        revealItems.forEach((item) => observer.observe(item));
-
-        const filterBtns = document.querySelectorAll(".filter-btn");
+        const filterButtons = document.querySelectorAll(".filter-btn");
         const projectCards = document.querySelectorAll(".project-card");
-
-        filterBtns.forEach((btn) => {
-            btn.addEventListener("click", () => {
-                filterBtns.forEach((b) => b.classList.remove("active"));
-                btn.classList.add("active");
-
-                const filter = btn.dataset.filter;
-
+        filterButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                filterButtons.forEach((item) => item.classList.remove("active"));
+                button.classList.add("active");
+                const filter = button.dataset.filter;
                 projectCards.forEach((card) => {
-                    const categories = card.dataset.category.split(" ");
-                    if (filter === "all" || categories.includes(filter)) {
-                        card.classList.remove("hide");
-                    } else {
-                        card.classList.add("hide");
-                    }
+                    const domains = card.dataset.domain.split(" ");
+                    card.classList.toggle("hide", filter !== "all" && !domains.includes(filter));
                 });
             });
         });
 
-        const navLinks = document.querySelectorAll(".nav-links a");
-        const sections = document.querySelectorAll("section");
+        const navLinks = [...document.querySelectorAll(".nav-links a")];
+        const sections = [...document.querySelectorAll("main section[id]")];
+        const progress = document.getElementById("progress");
 
-        window.addEventListener("scroll", () => {
-            let current = "";
+        function handleScroll() {
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const ratio = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+            progress.style.width = `${ratio * 100}%`;
 
+            let current = "about";
             sections.forEach((section) => {
-                const sectionTop = section.offsetTop - 120;
-                if (scrollY >= sectionTop) {
-                    current = section.getAttribute("id");
+                if (window.scrollY >= section.offsetTop - 160) {
+                    current = section.id;
                 }
             });
-
             navLinks.forEach((link) => {
-                link.classList.remove("active");
-                if (link.getAttribute("href") === "#" + current) {
-                    link.classList.add("active");
-                }
+                link.classList.toggle("active", link.getAttribute("href") === `#${current}`);
             });
-        });
+        }
 
-        const tiltCard = document.getElementById("tiltCard");
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
 
-        tiltCard.addEventListener("mousemove", (e) => {
-            const rect = tiltCard.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const rotateX = ((y / rect.height) - 0.5) * -10;
-            const rotateY = ((x / rect.width) - 0.5) * 10;
-            tiltCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-
-        tiltCard.addEventListener("mouseleave", () => {
-            tiltCard.style.transform = "rotateX(0deg) rotateY(0deg)";
-        });
-
-        const canvas = document.getElementById("particleCanvas");
+        const canvas = document.getElementById("networkCanvas");
         const ctx = canvas.getContext("2d");
-        let particles = [];
+        let nodes = [];
+        let pointer = { x: -9999, y: -9999 };
 
         function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            createParticles();
+            const scale = Math.min(window.devicePixelRatio || 1, 2);
+            canvas.width = Math.floor(window.innerWidth * scale);
+            canvas.height = Math.floor(window.innerHeight * scale);
+            canvas.style.width = `${window.innerWidth}px`;
+            canvas.style.height = `${window.innerHeight}px`;
+            ctx.setTransform(scale, 0, 0, scale, 0, 0);
+            createNodes();
         }
 
-        function createParticles() {
-            const count = Math.min(90, Math.floor(window.innerWidth / 18));
-            particles = [];
-
-            for (let i = 0; i < count; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.55,
-                    vy: (Math.random() - 0.5) * 0.55,
-                    r: Math.random() * 2 + 1
-                });
-            }
+        function createNodes() {
+            const count = Math.max(36, Math.min(78, Math.floor(window.innerWidth / 18)));
+            nodes = Array.from({ length: count }, () => ({
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                vx: (Math.random() - 0.5) * 0.26,
+                vy: (Math.random() - 0.5) * 0.26,
+                r: Math.random() * 1.6 + 0.5
+            }));
         }
 
-        function drawParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        function drawNetwork() {
+            ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+            ctx.lineWidth = 1;
 
-            const isDark = body.classList.contains("dark");
-            ctx.fillStyle = isDark ? "rgba(105, 180, 255, 0.55)" : "rgba(29, 140, 255, 0.48)";
-            ctx.strokeStyle = isDark ? "rgba(105, 180, 255, 0.16)" : "rgba(29, 140, 255, 0.13)";
+            nodes.forEach((node) => {
+                node.x += node.vx;
+                node.y += node.vy;
+                if (node.x < 0 || node.x > window.innerWidth) node.vx *= -1;
+                if (node.y < 0 || node.y > window.innerHeight) node.vy *= -1;
 
-            particles.forEach((p) => {
-                p.x += p.vx;
-                p.y += p.vy;
-
-                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                const pdx = node.x - pointer.x;
+                const pdy = node.y - pointer.y;
+                const pDist = Math.sqrt(pdx * pdx + pdy * pdy);
+                if (pDist < 130) {
+                    node.x += pdx * 0.002;
+                    node.y += pdy * 0.002;
+                }
 
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
+                ctx.fillStyle = "rgba(145, 222, 255, 0.58)";
                 ctx.fill();
             });
 
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const a = particles[i];
-                    const b = particles[j];
+            for (let i = 0; i < nodes.length; i += 1) {
+                for (let j = i + 1; j < nodes.length; j += 1) {
+                    const a = nodes[i];
+                    const b = nodes[j];
                     const dx = a.x - b.x;
                     const dy = a.y - b.y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < 120) {
-                        ctx.globalAlpha = 1 - dist / 120;
+                    if (dist < 125) {
+                        ctx.globalAlpha = 1 - dist / 125;
+                        ctx.strokeStyle = "rgba(100, 216, 255, 0.17)";
                         ctx.beginPath();
                         ctx.moveTo(a.x, a.y);
                         ctx.lineTo(b.x, b.y);
@@ -1273,12 +1608,19 @@
                 }
             }
 
-            requestAnimationFrame(drawParticles);
+            requestAnimationFrame(drawNetwork);
         }
 
         window.addEventListener("resize", resizeCanvas);
+        window.addEventListener("pointermove", (event) => {
+            pointer = { x: event.clientX, y: event.clientY };
+        });
+        window.addEventListener("pointerleave", () => {
+            pointer = { x: -9999, y: -9999 };
+        });
+
         resizeCanvas();
-        drawParticles();
+        drawNetwork();
     </script>
 </body>
 </html>
