@@ -8,7 +8,7 @@ url = "https://handsomemartin2005.github.io"
 name = "Zidu Zhang"
 title = "Computer Science Undergraduate"
 institution = "Beijing University of Technology"
-avatar = ""
+avatar = "/assets/zidu-zhang-portrait.webp"
 
 [social]
 email = "handsomemartin@emails.bjut.edu.cn"

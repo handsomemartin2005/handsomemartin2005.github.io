@@ -28,11 +28,11 @@ content = "Developed a state-level forecasting workflow that accounts for when s
 link = "https://github.com/handsomemartin2005/RELIEF-HGDiff"
 
 [[items]]
-title = "GeoMask-OMR · Piano score recognition and MusicXML reconstruction"
+title = "RIGOR-OMR · Zero-shot optical music recognition"
 subtitle = "Optical music recognition"
-content = "Built a pipeline covering staff localization, symbol detection, mask refinement, relation modeling, and MusicXML export. Prepared an 81-class DeepScores dataset with 1,362 training images and 352 validation images. Evaluated the pipeline on five real piano-score pages, producing 6,485 fused symbols and 2,187 notes. The linked StaffOMR repository documents an early rule-based baseline."
+content = "Uses staff-normalized geometry to guide visual symbol detection and explicit relation reasoning, then reconstructs structured scores without target-domain training or dataset-specific adaptation. Evaluates cross-domain recognition with a pitch–duration event protocol. StaffOMR is an early rule-based baseline."
 link = "https://github.com/handsomemartin2005/StaffOMR"
-link_label = "GitHub · StaffOMR"
+link_label = "GitHub · StaffOMR baseline"
 
 [[items]]
 title = "Power metering reliability and intelligent operations"

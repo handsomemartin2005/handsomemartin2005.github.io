@@ -28,11 +28,11 @@ content = "开发州级流感预测流程，在评估中考虑公共卫生监测
 link = "https://github.com/handsomemartin2005/RELIEF-HGDiff"
 
 [[items]]
-title = "GeoMask-OMR · 钢琴乐谱识别与 MusicXML 重建"
+title = "RIGOR-OMR · 零样本跨领域光学乐谱识别"
 subtitle = "光学乐谱识别"
-content = "搭建从谱线定位、符号检测、掩膜细化和关系建模到 MusicXML 导出的流程，构建包含 81 类符号的 DeepScores 数据集，含 1,362 张训练图像和 352 张验证图像。在五页真实钢琴乐谱上进行评估，输出 6,485 个融合符号和 2,187 个音符。链接指向早期规则基线 StaffOMR。"
+content = "利用谱线归一化后的几何信息指导视觉符号检测与显式关系推理，无需在目标域训练或针对特定数据集适配，即可重建结构化乐谱。采用音高—时值事件协议评估跨领域识别效果。StaffOMR 是早期规则基线。"
 link = "https://github.com/handsomemartin2005/StaffOMR"
-link_label = "GitHub · StaffOMR"
+link_label = "GitHub · StaffOMR 基线"
 
 [[items]]
 title = "电力计量可靠性与智能运维"
