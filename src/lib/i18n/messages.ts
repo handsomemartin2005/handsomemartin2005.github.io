@@ -44,6 +44,7 @@ export interface LocaleMessages {
     code: string;
     status: Record<import('@/types/publication').PublicationStatus, string>;
     targetVenue: string;
+    reviewScores: string;
     manuscript: string;
   };
   footer: {
@@ -96,8 +97,9 @@ const en: LocaleMessages = {
     abstract: 'Abstract',
     bibtex: 'BibTeX',
     code: 'Code',
-    status: { published: 'Published', accepted: 'Accepted', 'under-review': 'Under review', submitted: 'Submitted', 'in-preparation': 'In preparation', draft: 'Draft' },
+    status: { published: 'Published', accepted: 'Accepted', rejected: 'Rejected', 'under-review': 'Under review', submitted: 'Submitted', 'in-preparation': 'In preparation', draft: 'Draft' },
     targetVenue: 'Target venue',
+    reviewScores: 'Review scores',
     manuscript: 'Manuscript',
   },
   footer: {
@@ -150,8 +152,9 @@ const zh: LocaleMessages = {
     abstract: '摘要',
     bibtex: 'BibTeX',
     code: '代码',
-    status: { published: '已发表', accepted: '已录用', 'under-review': '审稿中', submitted: '已投稿', 'in-preparation': '准备投稿', draft: '草稿' },
+    status: { published: '已发表', accepted: '已录用', rejected: '已拒稿', 'under-review': '审稿中', submitted: '已投稿', 'in-preparation': '准备投稿', draft: '草稿' },
     targetVenue: '拟投',
+    reviewScores: '评审分数',
     manuscript: '手稿',
   },
   footer: {

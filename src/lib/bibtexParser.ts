@@ -20,7 +20,7 @@ const typeMapping: Record<string, PublicationType> = {
   misc: 'preprint',
 };
 
-const publicationStatuses: PublicationStatus[] = ['published', 'accepted', 'under-review', 'submitted', 'in-preparation', 'draft'];
+const publicationStatuses: PublicationStatus[] = ['published', 'accepted', 'rejected', 'under-review', 'submitted', 'in-preparation', 'draft'];
 
 // Convert month names to numbers
 const monthMapping: Record<string, number> = {
@@ -83,6 +83,7 @@ export function parseBibTeX(bibtexContent: string, locale?: string): Publication
       // Optional fields
       journal: cleanBibTeXString(tags.journal),
       targetVenue: cleanBibTeXString(tags.targetvenue),
+      reviewScores: cleanBibTeXString(tags.reviewscores) || undefined,
       conference: cleanBibTeXString(tags.booktitle),
       volume: tags.volume,
       issue: tags.number,
@@ -96,7 +97,7 @@ export function parseBibTeX(bibtexContent: string, locale?: string): Publication
       preview,
 
       // Store original BibTeX (excluding custom fields)
-      bibtex: reconstructBibTeX(entry, ['selected', 'preview', 'description', 'keywords', 'code', 'status', 'targetvenue']),
+      bibtex: reconstructBibTeX(entry, ['selected', 'preview', 'description', 'keywords', 'code', 'status', 'targetvenue', 'reviewscores']),
     };
 
     // Clean up undefined fields

@@ -1,0 +1,16 @@
+type = "card"
+title = "Research projects"
+
+[[items]]
+title = "RMPF-Orion · Proxy electricity load forecasting"
+subtitle = "In progress"
+content = "Developing robust temporal models that combine multiple data sources to forecast proxy electricity load."
+
+[[items]]
+title = "Atlas · Repository-level LLM integration study"
+subtitle = "Empirical software engineering"
+date = "2026"
+content = """
+- Built Atlas to study how open-source projects integrate language models, combining evidence from source code, dependencies, configuration, and project documentation.
+- Constructed a 200-repository benchmark and studied 12,991 active GitHub repositories. The study identified 1,036 projects that integrate LLMs and included responsible disclosure of security and license-compliance findings.
+"""

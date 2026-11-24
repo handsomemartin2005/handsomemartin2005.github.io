@@ -46,6 +46,7 @@ export interface Publication {
   bibtex?: string;
   venue?: string;
   targetVenue?: string;
+  reviewScores?: string;
   location?: string;
   awards?: string[];
   featured?: boolean;
@@ -71,6 +72,7 @@ export type PublicationType =
 export type PublicationStatus =
   | 'published'
   | 'accepted'
+  | 'rejected'
   | 'under-review'
   | 'submitted'
   | 'in-preparation'

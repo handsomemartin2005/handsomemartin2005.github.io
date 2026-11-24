@@ -17,6 +17,11 @@ export default function PublicationDetails({ publication }: { publication: Publi
       {publication.targetVenue && (
         <span>· {publication.status === 'in-preparation' && `${labels.targetVenue} · `}{publication.targetVenue}</span>
       )}
+      {publication.reviewScores && (
+        <span className="inline-flex gap-1 tabular-nums">
+          <span aria-hidden="true">·</span> {labels.reviewScores}: {publication.reviewScores}
+        </span>
+      )}
     </div>
   );
 }

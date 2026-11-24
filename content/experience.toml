@@ -1,5 +1,5 @@
 type = "card"
-title = "Research experience"
+title = "Internship and research assistant experience"
 
 [[items]]
 title = "Summer Research Intern"
@@ -9,15 +9,6 @@ content = """
 - Developed a state-level data pipeline for influenza early warning from public health, search, weather, and calendar signals.
 - Designed ReLiEF-HGDiff, a forecasting model that accounts for when different data sources become available.
 - In the project evaluation, achieved 0.6477 percentage points of ILI mean absolute error and improved surge recall from 0.4477 to 0.5891.
-"""
-
-[[items]]
-title = "Atlas · Repository-level LLM integration study"
-subtitle = "Empirical software engineering"
-date = "2026"
-content = """
-- Built Atlas to study how open-source projects integrate language models, combining evidence from source code, dependencies, configuration, and project documentation.
-- Constructed a 200-repository benchmark and studied 12,991 active GitHub repositories. The study identified 1,036 projects that integrate LLMs and included responsible disclosure of security and license-compliance findings.
 """
 
 [[items]]

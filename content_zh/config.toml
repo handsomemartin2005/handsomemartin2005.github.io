@@ -24,6 +24,12 @@ target = "experience"
 href = "/experience/"
 
 [[navigation]]
+title = "项目"
+type = "page"
+target = "projects"
+href = "/projects/"
+
+[[navigation]]
 title = "荣誉奖项"
 type = "page"
 target = "awards"

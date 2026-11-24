@@ -45,19 +45,21 @@ export default function SelectedPublications({ publications, title, enableOnePag
                         <h3 className="font-semibold text-primary mb-2 leading-tight">
                             <FormattedBibTeXText nodes={pub.titleNodes} fallback={pub.title} />
                         </h3>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-500 mb-1">
-                            {pub.authors.map((author, idx) => (
-                                <span key={idx}>
-                                    <span className={`${author.isHighlighted ? 'font-semibold text-accent' : ''} ${author.isCoAuthor ? `underline underline-offset-4 ${author.isHighlighted ? 'decoration-accent' : 'decoration-neutral-400'}` : ''}`}>
-                                        {author.name}
+                        {pub.authors.length > 0 && (
+                            <p className="text-sm text-neutral-600 dark:text-neutral-500 mb-1">
+                                {pub.authors.map((author, idx) => (
+                                    <span key={idx}>
+                                        <span className={`${author.isHighlighted ? 'font-semibold text-accent' : ''} ${author.isCoAuthor ? `underline underline-offset-4 ${author.isHighlighted ? 'decoration-accent' : 'decoration-neutral-400'}` : ''}`}>
+                                            {author.name}
+                                        </span>
+                                        {author.isCorresponding && (
+                                            <sup className={`ml-0 ${author.isHighlighted ? 'text-accent' : 'text-neutral-600 dark:text-neutral-500'}`}>†</sup>
+                                        )}
+                                        {idx < pub.authors.length - 1 && ', '}
                                     </span>
-                                    {author.isCorresponding && (
-                                        <sup className={`ml-0 ${author.isHighlighted ? 'text-accent' : 'text-neutral-600 dark:text-neutral-500'}`}>†</sup>
-                                    )}
-                                    {idx < pub.authors.length - 1 && ', '}
-                                </span>
-                            ))}
-                        </p>
+                                ))}
+                            </p>
+                        )}
                         <PublicationDetails publication={pub} />
                         {pub.description && (
                             <p className="text-sm text-neutral-500 dark:text-neutral-500 line-clamp-2">
