@@ -1,0 +1,24 @@
+type = "about"
+title = "首页"
+
+[profile]
+research_interests = ["计算机视觉", "多模态预测", "超图学习", "大模型智能体"]
+
+[[sections]]
+id = "research"
+type = "markdown"
+source = "bio.md"
+title = "个人简介"
+
+[[sections]]
+id = "publications"
+type = "publications"
+title = "精选研究"
+filter = "selected"
+limit = 3
+
+[[sections]]
+id = "news"
+type = "list"
+title = "研究动态"
+source = "news.toml"

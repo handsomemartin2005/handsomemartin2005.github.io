@@ -1,0 +1,63 @@
+[site]
+title = "Zidu Zhang"
+description = "Academic homepage of Zidu Zhang, a computer science undergraduate at Beijing University of Technology working on computer vision, multimodal learning, and forecasting."
+favicon = "/favicon.svg"
+url = "https://handsomemartin2005.github.io"
+
+[author]
+name = "Zidu Zhang"
+title = "Computer Science Undergraduate"
+institution = "Beijing University of Technology"
+avatar = ""
+
+[social]
+email = "handsomemartin@emails.bjut.edu.cn"
+github = "https://github.com/handsomemartin2005"
+cv = "/assets/zidu_zhang_phd_cv.pdf"
+
+[features]
+enable_likes = false
+enable_one_page_mode = false
+
+[i18n]
+enabled = true
+locales = ["en", "zh"]
+default_locale = "en"
+mode = "fixed"
+fixed_locale = "en"
+persist = true
+switcher = true
+
+[i18n.labels]
+en = "English"
+zh = "中文"
+
+[[navigation]]
+title = "Home"
+type = "page"
+target = "about"
+href = "/"
+
+[[navigation]]
+title = "Publications"
+type = "page"
+target = "publications"
+href = "/publications/"
+
+[[navigation]]
+title = "Experience"
+type = "page"
+target = "experience"
+href = "/experience/"
+
+[[navigation]]
+title = "Awards"
+type = "page"
+target = "awards"
+href = "/awards/"
+
+[[navigation]]
+title = "CV"
+type = "page"
+target = "cv"
+href = "/cv/"

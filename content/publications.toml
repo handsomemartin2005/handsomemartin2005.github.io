@@ -1,0 +1,4 @@
+type = "publication"
+title = "Papers and manuscripts"
+description = "Publication and submission status is shown for each work."
+source = "publications.bib"

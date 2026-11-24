@@ -1,0 +1,21 @@
+type = "card"
+title = "Honors and awards"
+
+[[items]]
+title = "Beijing Special Prize"
+subtitle = "“Youth Innovation Beijing” Challenge Cup Capital University Student Entrepreneurship Plan Competition"
+date = "2026"
+
+[[items]]
+title = "National Second Prize"
+subtitle = "12th National Undergraduate Energy Economics Academic Creativity Competition"
+date = "2025"
+
+[[items]]
+title = "Beijing Second Prize"
+subtitle = "Higher Education Press Cup National Undergraduate Mathematical Contest in Modeling"
+date = "2025"
+
+[[items]]
+title = "National Second Prize"
+subtitle = "RAICOM Robotics Developer Competition"
