@@ -1,0 +1,22 @@
+type = "card"
+title = "Energy research projects"
+
+[[items]]
+title = "Henan proxy electricity procurement forecasting with multiple weather indicators"
+content = "Prepared and aligned electricity and weather data, investigated procurement workflows, and contributed to weather feature engineering, proxy-load forecasting, and analysis of unusual load patterns."
+
+[[items]]
+title = "Curve-based trading to connect medium- and long-term electricity markets with spot markets"
+content = "Contributed to the forecasting workstream by preparing time-series inputs for priority generation and purchase curves and studying how their mismatch affects the volume available for market trading."
+
+[[items]]
+title = "AI-assisted decision support for Liaoning electricity market operations"
+content = "Contributed to the feasibility study covering multi-horizon forecasts of market operating conditions, decision support for generator bidding, and market-clearing analysis and risk alerts."
+
+[[items]]
+title = "AI-driven dynamic classification and management of EV charging stations"
+content = "Contributed to research on spatiotemporal charging demand, coordinated charging under grid constraints, and the use of demand forecasts to classify station operating conditions and inform management decisions."
+
+[[items]]
+title = "LLM-based reliability and intelligent maintenance of power metering systems"
+content = "Developed meter-panel detection and OCR workflows, and contributed to a knowledge graph and diagnostic tools for fault analysis and maintenance decision support."

@@ -1,4 +1,5 @@
 type = "publication"
 title = "Papers and manuscripts"
-description = "Publication and submission status is shown for each work."
+description = "Selected research projects, papers, manuscripts, and patents."
 source = "publications.bib"
+show_research_groups = true

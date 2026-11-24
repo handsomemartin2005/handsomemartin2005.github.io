@@ -31,14 +31,21 @@ export function loadTextPageContent(config: TextPageConfig, locale?: string): st
   const awardList = getCardItems('awards', locale).map((item) => (
     `- **${item.title}** · ${[item.subtitle, item.date].filter(Boolean).join(' · ')}`
   ));
-  const internshipCards = getCardItems('experience', locale).map((item) => formatCard(item, sections.projectLink));
+  const experience = getPageConfig<CardPageConfig>('experience', locale);
+  const internshipCards = (experience?.items ?? []).map(item => formatCard(item, sections.projectLink));
+  const energy = experience?.section_source ? getPageConfig<CardPageConfig>(experience.section_source, locale) : null;
+  const energyCards = energy?.items.map(item => formatCard(item, sections.projectLink)) ?? [];
+  const patents = getPageConfig<CardPageConfig>('patents', locale);
+  const patentCards = patents?.items.map(item => formatCard(item, sections.projectLink)) ?? [];
   const projectCards = getCardItems('projects', locale).map((item) => formatCard(item, sections.projectLink));
 
   return [
     intro,
     `## ${sections.internships}`, ...internshipCards,
+    ...(energy ? [`## ${energy.title}`, ...energyCards] : []),
     `## ${sections.projects}`, ...projectCards,
     `## ${sections.publications}`, publicationList.join('\n'),
+    ...(patents ? [`## ${patents.title}`, ...patentCards] : []),
     `## ${sections.awards}`, awardList.join('\n'),
     config.appendix ? getMarkdownContent(config.appendix, locale).trim() : '',
   ].filter(Boolean).join('\n\n');

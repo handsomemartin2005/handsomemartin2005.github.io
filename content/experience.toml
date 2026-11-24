@@ -1,5 +1,6 @@
 type = "card"
 title = "Research internships"
+section_source = "energy-projects"
 
 [[items]]
 title = "Summer Research Intern"
@@ -16,7 +17,7 @@ title = "Research Intern"
 subtitle = "North China Energy Internet Research Institute"
 date = "Jul 2025–Present"
 content = """
-- Built a multi-source electricity-load data pipeline with more than 100,000 trainable samples, covering anomaly detection, missing-value handling, and temporal alignment. Used findings from field research on power-purchase workflows to inform feature design.
-- Integrated LLM-assisted event extraction and SHAP for abnormal-load attribution and forecast correction. In representative evaluations, forecasting error fell by roughly 15–64% and stability during abnormal periods improved by about 13%.
+- Built a multi-source electricity-load data pipeline, covering anomaly detection, missing-value handling, and temporal alignment. Used findings from field research on power-purchase workflows to inform feature design.
+- Integrated LLM-assisted event extraction and SHAP for abnormal-load attribution and forecast correction.
 - Developed power metering workflows using YOLOv8, OCR, Flask, and Neo4j.
 """

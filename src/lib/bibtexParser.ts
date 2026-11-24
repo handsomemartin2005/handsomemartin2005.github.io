@@ -1,4 +1,4 @@
-import { Publication, PublicationType, PublicationStatus, ResearchArea } from '@/types/publication';
+import { Publication, PublicationType, PublicationStatus, researchAreas } from '@/types/publication';
 import { getConfig } from './config';
 import { getRuntimeI18nConfig } from './i18n/config';
 import { parseBibTeXInline } from './bibtexInline';
@@ -78,7 +78,7 @@ export function parseBibTeX(bibtexContent: string, locale?: string): Publication
       status: publicationStatuses.find((status) => status === tags.status) || (type === 'manuscript' ? 'draft' : 'published'),
       tags: keywords,
       keywords,
-      researchArea: detectResearchArea(tags.title, keywords),
+      researchArea: researchAreas.find(area => area === tags.researcharea) ?? 'other',
 
       // Optional fields
       journal: cleanBibTeXString(tags.journal),
@@ -90,6 +90,7 @@ export function parseBibTeX(bibtexContent: string, locale?: string): Publication
       pages: tags.pages,
       doi: tags.doi,
       url: tags.url,
+      pdfUrl: tags.pdf,
       code: tags.code,
       abstract: cleanBibTeXString(tags.abstract),
       description: cleanBibTeXString(tags.description || tags.note),
@@ -97,7 +98,7 @@ export function parseBibTeX(bibtexContent: string, locale?: string): Publication
       preview,
 
       // Store original BibTeX (excluding custom fields)
-      bibtex: reconstructBibTeX(entry, ['selected', 'preview', 'description', 'keywords', 'code', 'status', 'targetvenue', 'reviewscores']),
+      bibtex: reconstructBibTeX(entry, ['selected', 'preview', 'description', 'keywords', 'code', 'status', 'targetvenue', 'reviewscores', 'researcharea', 'pdf']),
     };
 
     // Clean up undefined fields
@@ -238,31 +239,6 @@ function cleanBibTeXString(str?: string): string {
   if (!str) return '';
 
   return parseBibTeXInline(str).plainText;
-}
-
-function detectResearchArea(title: string, keywords: string[]): ResearchArea {
-  const text = (title + ' ' + keywords.join(' ')).toLowerCase();
-
-  if (text.includes('healthcare') || text.includes('medical') || text.includes('health')) {
-    return 'ai-healthcare';
-  }
-  if (text.includes('signal') || text.includes('processing')) {
-    return 'signal-processing';
-  }
-  if (text.includes('reliability') || text.includes('fault') || text.includes('diagnosis')) {
-    return 'reliability-engineering';
-  }
-  if (text.includes('quantum')) {
-    return 'quantum-computing';
-  }
-  if (text.includes('neural') || text.includes('spiking')) {
-    return 'neural-networks';
-  }
-  if (text.includes('transformer') || text.includes('attention')) {
-    return 'transformer-architectures';
-  }
-
-  return 'machine-learning';
 }
 
 function reconstructBibTeX(entry: { entryType: string; citationKey: string; entryTags: Record<string, string> }, excludeFields: string[] = []): string {

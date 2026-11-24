@@ -8,13 +8,21 @@ import {
   PublicationPageConfig,
   TextPageConfig,
   CardPageConfig,
+  CardItem,
 } from '@/types/page';
 import { useLocaleStore } from '@/lib/stores/localeStore';
 
 export type DynamicPageLocaleData =
-  | { type: 'publication'; config: PublicationPageConfig; publications: Publication[] }
+  | {
+      type: 'publication';
+      config: PublicationPageConfig;
+      publications: Publication[];
+      energyProjects?: CardPageConfig;
+      agentProject?: CardItem;
+      patents?: CardPageConfig;
+    }
   | { type: 'text'; config: TextPageConfig; content: string }
-  | { type: 'card'; config: CardPageConfig };
+  | { type: 'card'; config: CardPageConfig; additionalSection?: CardPageConfig };
 
 interface DynamicPageClientProps {
   dataByLocale: Record<string, DynamicPageLocaleData>;
@@ -33,13 +41,19 @@ export default function DynamicPageClient({ dataByLocale, defaultLocale }: Dynam
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {pageData.type === 'publication' && (
-        <PublicationsList config={pageData.config} publications={pageData.publications} />
+        <PublicationsList
+          config={pageData.config}
+          publications={pageData.publications}
+          energyProjects={pageData.energyProjects}
+          agentProject={pageData.agentProject}
+          patents={pageData.patents}
+        />
       )}
       {pageData.type === 'text' && (
         <TextPage config={pageData.config} content={pageData.content} />
       )}
       {pageData.type === 'card' && (
-        <CardPage config={pageData.config} />
+        <CardPage config={pageData.config} additionalSection={pageData.additionalSection} />
       )}
     </div>
   );

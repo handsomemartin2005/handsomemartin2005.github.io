@@ -1,4 +1,5 @@
 type = "publication"
 title = "论文与手稿"
-description = "每项研究均标注发表或投稿状态。"
+description = "科研项目、论文手稿与专利。"
 source = "publications.bib"
+show_research_groups = true

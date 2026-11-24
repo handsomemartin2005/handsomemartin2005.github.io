@@ -7,6 +7,7 @@ export interface BasePageConfig {
 export interface PublicationPageConfig extends BasePageConfig {
     type: 'publication';
     source: string;
+    show_research_groups?: boolean;
 }
 
 export interface TextPageConfig extends BasePageConfig {
@@ -23,6 +24,7 @@ export interface TextPageConfig extends BasePageConfig {
 }
 
 export interface CardItem {
+    id?: string;
     title: string;
     subtitle?: string;
     date?: string;
@@ -36,4 +38,5 @@ export interface CardItem {
 export interface CardPageConfig extends BasePageConfig {
     type: 'card';
     items: CardItem[];
+    section_source?: string;
 }

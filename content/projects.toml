@@ -2,6 +2,7 @@ type = "card"
 title = "Research and engineering projects"
 
 [[items]]
+id = "agent-security"
 title = "The Secret Was Never in the Call"
 subtitle = "LLM agent security · Ongoing"
 content = "Studies how the actual effects of tool use can differ from what an agent visibly requests. The project evaluates data exposure and authorization risks in controlled settings to inform better auditing."
@@ -37,7 +38,7 @@ link_label = "GitHub · StaffOMR baseline"
 [[items]]
 title = "Power metering reliability and intelligent operations"
 subtitle = "Power systems · Computer vision"
-content = "Developed meter-panel detection and OCR workflows and contributed to the PowerKG knowledge graph and MeterAgent diagnostic system. The team collected over 40,000 device, vendor, and fault records. Panel detection exceeded 97% accuracy, with about a 15% improvement in effective OCR recognition."
+content = "Developed meter-panel detection and OCR workflows and contributed to the PowerKG knowledge graph and MeterAgent diagnostic system."
 link = "https://github.com/handsomemartin2005/YOLOv8_sensor"
 link_label = "GitHub · Meter detection / OCR"
 

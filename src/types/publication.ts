@@ -78,14 +78,6 @@ export type PublicationStatus =
   | 'in-preparation'
   | 'draft';
 
-export type ResearchArea =
-  | 'ai-healthcare'
-  | 'signal-processing'
-  | 'reliability-engineering'
-  | 'quantum-computing'
-  | 'machine-learning'
-  | 'fault-diagnosis'
-  | 'neural-networks'
-  | 'transformer-architectures'
-  | 'biomedical-engineering'
-  | 'other';
+export const researchAreas = ['energy', 'computer-vision', 'software-security', 'other'] as const;
+
+export type ResearchArea = typeof researchAreas[number];

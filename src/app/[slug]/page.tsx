@@ -28,6 +28,11 @@ function loadDynamicPageData(slug: string, locale?: string): DynamicPageLocaleDa
       type: 'publication',
       config: pubConfig,
       publications: parseBibTeX(bibtex, locale),
+      ...(pubConfig.show_research_groups && {
+        energyProjects: getPageConfig<CardPageConfig>('energy-projects', locale) ?? undefined,
+        agentProject: getPageConfig<CardPageConfig>('projects', locale)?.items.find(item => item.id === 'agent-security'),
+        patents: getPageConfig<CardPageConfig>('patents', locale) ?? undefined,
+      }),
     };
   }
 
@@ -42,9 +47,11 @@ function loadDynamicPageData(slug: string, locale?: string): DynamicPageLocaleDa
   }
 
   if (pageConfig.type === 'card') {
+    const config = pageConfig as CardPageConfig;
     return {
       type: 'card',
-      config: pageConfig as CardPageConfig,
+      config,
+      additionalSection: config.section_source ? getPageConfig<CardPageConfig>(config.section_source, locale) ?? undefined : undefined,
     };
   }
 
