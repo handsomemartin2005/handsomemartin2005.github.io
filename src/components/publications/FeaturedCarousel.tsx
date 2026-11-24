@@ -2,11 +2,9 @@
 
 import { useRef, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { ArrowDownTrayIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { useMessages } from '@/lib/i18n/useMessages';
 import type { Publication, ResearchArea } from '@/types/publication';
-import type { CardItem } from '@/types/page';
 
 interface Slide {
     id: string;
@@ -19,7 +17,7 @@ interface Slide {
     cover?: string;
 }
 
-const leadingIds = ['zhang2026echoes', 'zhang-rigor-omr', 'henan-procurement', 'zhang-relief'];
+const leadingIds = ['zhang2026echoes', 'zhang-rigor-omr', 'zhang-relief'];
 const covers: Record<string, string> = {
     'zhang2026echoes': '/assets/echoes-cover.webp',
     'zhang-rigor-omr': '/assets/paper-covers/rigor-omr.webp',
@@ -33,10 +31,8 @@ function priority(id: string) {
     return rank === -1 ? leadingIds.length : rank;
 }
 
-export default function FeaturedCarousel({ papers, energy, area, zh }: {
+export default function FeaturedCarousel({ papers, zh }: {
     papers: Publication[];
-    energy?: CardItem;
-    area: ResearchArea | 'all';
     zh: boolean;
 }) {
     const { publications: labels } = useMessages();
@@ -52,9 +48,6 @@ export default function FeaturedCarousel({ papers, energy, area, zh }: {
             authors: p.authors.map(a => a.name).join(', '), pdf: p.pdfUrl, cover: covers[p.id],
         };
     });
-    if (energy && (area === 'all' || area === 'energy')) {
-        slides.push({ id: 'henan-procurement', area: 'energy', name: zh ? '代理购电预测' : 'Procurement forecasting', subtitle: energy.title, meta: zh ? '科研项目' : 'Research project' });
-    }
     slides.sort((a,b) => priority(a.id) - priority(b.id));
     if (!slides.length) return null;
     const current = slides[position.index];
@@ -84,11 +77,10 @@ export default function FeaturedCarousel({ papers, energy, area, zh }: {
                 inert={i !== position.index} aria-hidden={i !== position.index}>
                 <div className="rl-feature-copy">
                     <p className="rl-kicker">{slide.meta}</p>
-                    <h2 className={slide.name.length > 38 ? 'rl-long-title' : undefined} lang={slide.area === 'energy' && zh ? 'zh' : 'en'}>{slide.name}</h2>
+                    <h2 className={slide.name.length > 38 ? 'rl-long-title' : undefined} lang="en">{slide.name}</h2>
                     <p className="rl-subtitle">{slide.subtitle}</p>
                     {slide.authors && <p className="rl-authors">{slide.authors}</p>}
                     {slide.pdf && <a href={slide.pdf} className="rl-primary" download aria-label={`${labels.downloadPdf} · ${slide.name}`}><ArrowDownTrayIcon width={15} aria-hidden="true" />{labels.downloadPdf}</a>}
-                    {slide.area === 'energy' && <Link href="/experience/#energy-projects" className="rl-primary">{labels.viewEnergyProjects} →</Link>}
                 </div>
                 {slide.cover && <div className="rl-cover"><Image src={slide.cover} alt={zh ? `${slide.name} 稿件首页` : `${slide.name} manuscript cover`} width={506} height={716} priority={i === 0} /></div>}
             </article>)}

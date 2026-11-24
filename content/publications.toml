@@ -1,5 +1,5 @@
 type = "publication"
 title = "Papers and manuscripts"
-description = "Selected research projects, papers, and manuscripts."
+description = "Selected papers and manuscripts."
 source = "publications.bib"
 show_research_groups = true

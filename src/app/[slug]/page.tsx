@@ -28,10 +28,6 @@ function loadDynamicPageData(slug: string, locale?: string): DynamicPageLocaleDa
       type: 'publication',
       config: pubConfig,
       publications: parseBibTeX(bibtex, locale),
-      ...(pubConfig.show_research_groups && {
-        energyProjects: getPageConfig<CardPageConfig>('energy-projects', locale) ?? undefined,
-        agentProject: getPageConfig<CardPageConfig>('projects', locale)?.items.find(item => item.id === 'agent-security'),
-      }),
     };
   }
 

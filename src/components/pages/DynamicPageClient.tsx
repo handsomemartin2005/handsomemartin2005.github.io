@@ -9,7 +9,7 @@ import {
   PublicationPageConfig,
   TextPageConfig,
   CardPageConfig,
-  CardItem,
+  
 } from '@/types/page';
 import { useLocaleStore } from '@/lib/stores/localeStore';
 
@@ -18,8 +18,6 @@ export type DynamicPageLocaleData =
       type: 'publication';
       config: PublicationPageConfig;
       publications: Publication[];
-      energyProjects?: CardPageConfig;
-      agentProject?: CardItem;
     }
   | { type: 'text'; config: TextPageConfig; content: string }
   | { type: 'card'; config: CardPageConfig; additionalSection?: CardPageConfig };
@@ -42,8 +40,6 @@ export default function DynamicPageClient({ dataByLocale, defaultLocale }: Dynam
     return <ResearchLibrary
       locale={locale}
       publications={pageData.publications}
-      agentProject={pageData.agentProject}
-      energyProjects={pageData.energyProjects?.items ?? []}
     />;
   }
 
@@ -53,8 +49,6 @@ export default function DynamicPageClient({ dataByLocale, defaultLocale }: Dynam
         <PublicationsList
           config={pageData.config}
           publications={pageData.publications}
-          energyProjects={pageData.energyProjects}
-          agentProject={pageData.agentProject}
         />
       )}
       {pageData.type === 'text' && (
