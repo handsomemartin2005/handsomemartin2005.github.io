@@ -2,8 +2,23 @@ type = "card"
 title = "Honors and awards"
 
 [[items]]
+title = "National Second Prize"
+subtitle = "RAICOM Robotics Developer Competition"
+date = "2026"
+
+[[items]]
 title = "Beijing Special Prize"
 subtitle = "“Youth Innovation Beijing” Challenge Cup Capital University Student Entrepreneurship Plan Competition"
+date = "2026"
+
+[[items]]
+title = "Provincial Second Prize"
+subtitle = "National Undergraduate Statistical Modeling Competition"
+date = "2026"
+
+[[items]]
+title = "Provincial Second Prize"
+subtitle = "National Undergraduate Market Research and Analysis Competition"
 date = "2026"
 
 [[items]]
@@ -17,5 +32,6 @@ subtitle = "Higher Education Press Cup National Undergraduate Mathematical Conte
 date = "2025"
 
 [[items]]
-title = "National Second Prize"
+title = "Beijing Third Prize"
 subtitle = "RAICOM Robotics Developer Competition"
+date = "2025"
