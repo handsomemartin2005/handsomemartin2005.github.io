@@ -1,5 +1,6 @@
 type = "card"
 title = "荣誉奖项"
+section_source = "patents"
 
 [[items]]
 title = "全国二等奖"

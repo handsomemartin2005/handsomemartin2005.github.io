@@ -27,10 +27,9 @@ interface PublicationsListProps {
     embedded?: boolean;
     energyProjects?: CardPageConfig;
     agentProject?: CardItem;
-    patents?: CardPageConfig;
 }
 
-export default function PublicationsList({ config, publications, embedded = false, energyProjects, agentProject, patents }: PublicationsListProps) {
+export default function PublicationsList({ config, publications, embedded = false, energyProjects, agentProject }: PublicationsListProps) {
     const messages = useMessages();
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedYear, setSelectedYear] = useState<number | 'all'>('all');
@@ -387,14 +386,6 @@ export default function PublicationsList({ config, publications, embedded = fals
                         {papers.map(renderPublication)}
                     </section>
                 ))}
-                {patents && (
-                    <section aria-labelledby="patents-title" className="space-y-4">
-                        <h2 id="patents-title" className="border-b border-neutral-200 dark:border-neutral-800 pb-2 text-2xl font-serif font-bold text-primary">
-                            {patents.title}
-                        </h2>
-                        <CardGrid items={patents.items} />
-                    </section>
-                )}
             </div>
         </motion.div>
     );

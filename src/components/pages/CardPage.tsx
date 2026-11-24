@@ -53,8 +53,8 @@ export default function CardPage({ config, embedded = false, additionalSection }
 
             <CardGrid items={config.items} embedded={embedded} />
             {additionalSection && (
-                <section id="energy-projects" className="mt-12 scroll-mt-24" aria-labelledby="energy-projects-title">
-                    <h2 id="energy-projects-title" className="mb-5 text-2xl font-serif font-bold text-primary">
+                <section id={config.section_source} className="mt-12 scroll-mt-24" aria-labelledby={`${config.section_source}-title`}>
+                    <h2 id={`${config.section_source}-title`} className="mb-5 text-2xl font-serif font-bold text-primary">
                         {additionalSection.title}
                     </h2>
                     <CardGrid items={additionalSection.items} embedded={embedded} />
@@ -69,7 +69,7 @@ export function CardGrid({ items, embedded = false }: { items: CardItem[]; embed
         <div className={`grid ${embedded ? "gap-4" : "gap-6"}`}>
             {items.map((item, index) => (
                 <motion.div
-                    key={item.id ?? item.title}
+                    key={item.id ?? `${item.title}-${item.subtitle ?? index}`}
                     initial={false}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.1 * index }}

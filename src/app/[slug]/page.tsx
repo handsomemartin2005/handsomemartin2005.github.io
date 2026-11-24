@@ -31,7 +31,6 @@ function loadDynamicPageData(slug: string, locale?: string): DynamicPageLocaleDa
       ...(pubConfig.show_research_groups && {
         energyProjects: getPageConfig<CardPageConfig>('energy-projects', locale) ?? undefined,
         agentProject: getPageConfig<CardPageConfig>('projects', locale)?.items.find(item => item.id === 'agent-security'),
-        patents: getPageConfig<CardPageConfig>('patents', locale) ?? undefined,
       }),
     };
   }

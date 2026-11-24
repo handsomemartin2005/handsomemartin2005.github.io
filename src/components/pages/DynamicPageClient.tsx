@@ -1,5 +1,6 @@
 'use client';
 
+import ResearchLibrary from '@/components/publications/ResearchLibrary';
 import PublicationsList from '@/components/publications/PublicationsList';
 import TextPage from '@/components/pages/TextPage';
 import CardPage from '@/components/pages/CardPage';
@@ -19,7 +20,6 @@ export type DynamicPageLocaleData =
       publications: Publication[];
       energyProjects?: CardPageConfig;
       agentProject?: CardItem;
-      patents?: CardPageConfig;
     }
   | { type: 'text'; config: TextPageConfig; content: string }
   | { type: 'card'; config: CardPageConfig; additionalSection?: CardPageConfig };
@@ -38,6 +38,15 @@ export default function DynamicPageClient({ dataByLocale, defaultLocale }: Dynam
     return null;
   }
 
+  if (pageData.type === 'publication' && pageData.config.show_research_groups) {
+    return <ResearchLibrary
+      locale={locale}
+      publications={pageData.publications}
+      agentProject={pageData.agentProject}
+      energyProjects={pageData.energyProjects?.items ?? []}
+    />;
+  }
+
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {pageData.type === 'publication' && (
@@ -46,7 +55,6 @@ export default function DynamicPageClient({ dataByLocale, defaultLocale }: Dynam
           publications={pageData.publications}
           energyProjects={pageData.energyProjects}
           agentProject={pageData.agentProject}
-          patents={pageData.patents}
         />
       )}
       {pageData.type === 'text' && (

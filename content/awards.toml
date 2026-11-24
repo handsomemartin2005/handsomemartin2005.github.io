@@ -1,5 +1,6 @@
 type = "card"
 title = "Honors and awards"
+section_source = "patents"
 
 [[items]]
 title = "National Second Prize"

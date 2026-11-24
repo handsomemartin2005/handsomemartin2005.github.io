@@ -1,4 +1,4 @@
-**Zidu Zhang** · 计算机科学与技术本科生\
+**张子都** · 计算机科学与技术本科生\
 [邮箱](mailto:handsomemartin@emails.bjut.edu.cn) · [GitHub](https://github.com/handsomemartin2005)
 
 [下载 PDF 简历（旧版）](/assets/zidu_zhang_phd_cv.pdf)

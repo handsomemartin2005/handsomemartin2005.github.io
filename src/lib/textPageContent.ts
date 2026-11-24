@@ -45,8 +45,8 @@ export function loadTextPageContent(config: TextPageConfig, locale?: string): st
     ...(energy ? [`## ${energy.title}`, ...energyCards] : []),
     `## ${sections.projects}`, ...projectCards,
     `## ${sections.publications}`, publicationList.join('\n'),
-    ...(patents ? [`## ${patents.title}`, ...patentCards] : []),
     `## ${sections.awards}`, awardList.join('\n'),
+    ...(patents ? [`## ${patents.title}`, ...patentCards] : []),
     config.appendix ? getMarkdownContent(config.appendix, locale).trim() : '',
   ].filter(Boolean).join('\n\n');
 }
