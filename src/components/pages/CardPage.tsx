@@ -74,6 +74,17 @@ export default function CardPage({ config, embedded = false }: { config: CardPag
                                 </ReactMarkdown>
                             </div>
                         )}
+                        {item.link && (
+                            <a
+                                href={item.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="mt-3 inline-flex items-center gap-1 rounded text-sm font-semibold text-accent underline-offset-4 hover:underline"
+                                aria-label={`${item.link_label || 'GitHub'} · ${item.title}`}
+                            >
+                                {item.link_label || 'GitHub'} <span aria-hidden="true">↗</span>
+                            </a>
+                        )}
                         {item.tags && (
                             <div className="flex flex-wrap gap-2 mt-4">
                                 {item.tags.map(tag => (

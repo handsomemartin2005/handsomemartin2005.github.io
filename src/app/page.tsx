@@ -1,4 +1,5 @@
 import { getConfig } from '@/lib/config';
+import { loadTextPageContent } from '@/lib/textPageContent';
 import { getMarkdownContent, getBibtexContent, getTomlContent, getPageConfig } from '@/lib/content';
 import { parseBibTeX } from '@/lib/bibtexParser';
 import HomePageClient, { type HomePageLocaleData } from '@/components/home/HomePageClient';
@@ -104,7 +105,7 @@ function loadPageDataForLocale(locale: string | undefined): HomePageLocaleData {
             type: 'text',
             id: item.target,
             config: textConfig,
-            content: getMarkdownContent(textConfig.source, locale),
+            content: loadTextPageContent(textConfig, locale),
           } as PageData;
         }
 

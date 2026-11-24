@@ -12,6 +12,14 @@ export interface PublicationPageConfig extends BasePageConfig {
 export interface TextPageConfig extends BasePageConfig {
     type: 'text';
     source: string;
+    cv_sections?: {
+        internships: string;
+        projects: string;
+        publications: string;
+        awards: string;
+        projectLink: string;
+    };
+    appendix?: string;
 }
 
 export interface CardItem {
@@ -21,6 +29,7 @@ export interface CardItem {
     content?: string;
     tags?: string[];
     link?: string;
+    link_label?: string;
     image?: string;
 }
 

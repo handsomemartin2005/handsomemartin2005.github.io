@@ -6,8 +6,8 @@ title = "Summer Research Intern"
 subtitle = "University of Virginia"
 date = "Jun–Aug 2026"
 content = """
-- Developed a state-level data pipeline for influenza early warning from public health, search, weather, and calendar signals.
-- Designed ReLiEF-HGDiff, a forecasting model that accounts for when different data sources become available.
+- Aligned public health surveillance, Google Trends, weather, hospitalization, wastewater, and calendar signals into state-week panels for 1–8-week influenza-like illness (ILI) forecasts and surge warnings.
+- Designed ReLiEF-HGDiff to account for when inputs become available and evaluated it against statistical and machine-learning baselines using only data available at each forecast date.
 - In the project evaluation, achieved 0.6477 percentage points of ILI mean absolute error and improved surge recall from 0.4477 to 0.5891.
 """
 
@@ -16,7 +16,7 @@ title = "Research Intern"
 subtitle = "North China Energy Internet Research Institute"
 date = "Jul 2025–Present"
 content = """
-- Built a multi-source pipeline for electricity load forecasting with more than 100,000 trainable samples.
-- Integrated LLM-assisted event extraction and SHAP-based analysis for abnormal-load attribution and forecast correction.
+- Built a multi-source electricity-load data pipeline with more than 100,000 trainable samples, covering anomaly detection, missing-value handling, and temporal alignment. Used findings from field research on power-purchase workflows to inform feature design.
+- Integrated LLM-assisted event extraction and SHAP for abnormal-load attribution and forecast correction. In representative evaluations, forecasting error fell by roughly 15–64% and stability during abnormal periods improved by about 13%.
 - Developed power metering workflows using YOLOv8, OCR, Flask, and Neo4j.
 """

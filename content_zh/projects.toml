@@ -1,16 +1,87 @@
 type = "card"
-title = "研究项目"
+title = "科研与工程项目"
+
+[[items]]
+title = "The Secret Was Never in the Call"
+subtitle = "大语言模型智能体安全 · 进行中"
+content = "研究智能体工具调用中可见的请求与工具实际行为之间的差异，通过受控评估分析数据暴露与授权风险，为改进审计提供依据。"
+
+[[items]]
+title = "语言条件下的无人机控制"
+subtitle = "视觉–语言–动作模型 · 初稿"
+content = "研究面向无人机导航的视觉–语言–动作模型高效适配。在导航基准上评估空间信息和运动历史对动作预测的影响。"
 
 [[items]]
 title = "RMPF-Orion · 代理购电负荷预测"
-subtitle = "进行中"
-content = "以鲁棒时序建模与多模态学习开展代理购电负荷预测。"
+subtitle = "多模态预测 · 进行中"
+content = "研究用于代理购电负荷预测的鲁棒时序模型。项目延续了交易曲线预测工作，融合负荷、气象、文本和事件信息，并结合大模型辅助分析与 SHAP 解释异常负荷。"
 
 [[items]]
 title = "Atlas · 仓库级大语言模型集成研究"
 subtitle = "实证软件工程"
-date = "2026 年"
-content = """
-- 构建 Atlas，综合源码、依赖、配置和项目文档，分析开源项目集成语言模型的方式。
-- 构建包含 200 个仓库的评测基准，分析 12,991 个活跃 GitHub 仓库，识别出 1,036 个集成大语言模型的项目，并对安全和许可证合规发现进行负责任披露。
-"""
+content = "综合源码、依赖、配置、项目文档和开发历史，识别开源项目集成大语言模型的方式。建立了包含 200 个仓库的评测基准，分析 12,991 个活跃 GitHub 仓库，识别出 1,036 个集成大语言模型的项目。评估中的仓库识别 F1 为 89.11%，加载模式识别 F1 为 84.97%。研究对发现的安全与许可证合规问题进行了负责任披露。"
+
+[[items]]
+title = "ReLiEF-HGDiff · 流感预警"
+subtitle = "多模态预测"
+content = "开发州级流感预测流程，在评估中考虑公共卫生监测及其他信号的实际发布时间，并按当时可获得的信息回测流感高峰预警性能。"
+link = "https://github.com/handsomemartin2005/RELIEF-HGDiff"
+
+[[items]]
+title = "GeoMask-OMR · 钢琴乐谱识别与 MusicXML 重建"
+subtitle = "光学乐谱识别"
+content = "搭建从谱线定位、符号检测、掩膜细化和关系建模到 MusicXML 导出的流程，构建包含 81 类符号的 DeepScores 数据集，含 1,362 张训练图像和 352 张验证图像。在五页真实钢琴乐谱上进行评估，输出 6,485 个融合符号和 2,187 个音符。链接指向早期规则基线 StaffOMR。"
+link = "https://github.com/handsomemartin2005/StaffOMR"
+link_label = "GitHub · StaffOMR"
+
+[[items]]
+title = "电力计量可靠性与智能运维"
+subtitle = "电力系统 · 计算机视觉"
+content = "开发电表面板检测和文字识别流程，参与 PowerKG 知识图谱与 MeterAgent 故障诊断。项目汇集了四万余条设备、厂家和故障记录，面板检测准确率超过 97%，有效 OCR 识别率提升约 15%。"
+link = "https://github.com/handsomemartin2005/YOLOv8_sensor"
+link_label = "GitHub · 电表检测与文字识别"
+
+[[items]]
+title = "YOLO-ARC · 工业表面检测"
+subtitle = "计算机视觉 · ICPECA 2026"
+content = "开发基于 YOLOv8 的轻量化检测模型，用于工业表面微小缺陷检测。"
+link = "https://github.com/handsomemartin2005/YOLO-ARC"
+
+[[items]]
+title = "HGDefect-YOLO · 工业缺陷检测"
+subtitle = "计算机视觉"
+content = "开发面向低对比度、不规则表面缺陷的轻量化检测模型。在 NEU-DET 上取得 79.9% AP50 和 45.9% AP50:95，模型参数量为 562 万。"
+
+[[items]]
+title = "SCH-MDETR · 微型无人机检测"
+subtitle = "计算机视觉"
+content = "研究可见光图像中的小目标检测。在 Det-Fly 验证集上取得 87.37% mAP50 和 51.60% mAP50–95，较 RT-DETR-R18-N 的 mAP50–95 提升 1.72 个百分点。"
+link = "https://github.com/handsomemartin2005/ACCV2026"
+
+[[items]]
+title = "MobiusKV · 缓存生命周期原型"
+subtitle = "大语言模型系统"
+content = "构建轻量级合成基准，研究多步任务中 KV 缓存的复用与淘汰策略。"
+link = "https://github.com/handsomemartin2005/Mobius-Band"
+
+[[items]]
+title = "Novel2Gal · 小说转视觉小说工作台"
+subtitle = "生成式 AI 应用"
+content = "开发 AI 辅助工作台，将长篇小说改编为具有角色视角和分支场景的交互式视觉小说剧本。"
+link = "https://github.com/handsomemartin2005/Nover2Gal"
+
+[[items]]
+title = "RAICOM · 交通标志分类"
+subtitle = "机器人竞赛项目"
+content = "整理多来源交通标志数据，并搭建面向鲁棒交通标志分类的预训练流程。"
+link = "https://github.com/handsomemartin2005/Raicom_final"
+
+[[items]]
+title = "智能充电站 AI 动态分级平台"
+subtitle = "能源系统"
+content = "设计充电站管理流程，将需求预测与动态分级、定价、有序充电引导、多智能体调度和预警联动。"
+
+[[items]]
+title = "车辆异常识别与分析系统"
+subtitle = "计算机视觉应用"
+content = "设计车辆异常识别与交通数据时空模式分析原型。"

@@ -1,16 +1,87 @@
 type = "card"
-title = "Research projects"
+title = "Research and engineering projects"
+
+[[items]]
+title = "The Secret Was Never in the Call"
+subtitle = "LLM agent security · Ongoing"
+content = "Studies how the actual effects of tool use can differ from what an agent visibly requests. The project evaluates data exposure and authorization risks in controlled settings to inform better auditing."
+
+[[items]]
+title = "Language-conditioned UAV control"
+subtitle = "Vision-language-action models · Manuscript draft"
+content = "Studies parameter-efficient adaptation of vision-language-action models for aerial navigation. The draft evaluates how spatial and motion context affect action prediction on a navigation benchmark."
 
 [[items]]
 title = "RMPF-Orion · Proxy electricity load forecasting"
-subtitle = "In progress"
-content = "Developing robust temporal models that combine multiple data sources to forecast proxy electricity load."
+subtitle = "Multimodal forecasting · In progress"
+content = "Developing robust temporal models for proxy electricity load forecasting. This work builds on my transaction-curve forecasting pipeline, which combines load, weather, text, and event signals and uses LLM-assisted analysis and SHAP to interpret anomalies."
 
 [[items]]
 title = "Atlas · Repository-level LLM integration study"
 subtitle = "Empirical software engineering"
-date = "2026"
-content = """
-- Built Atlas to study how open-source projects integrate language models, combining evidence from source code, dependencies, configuration, and project documentation.
-- Constructed a 200-repository benchmark and studied 12,991 active GitHub repositories. The study identified 1,036 projects that integrate LLMs and included responsible disclosure of security and license-compliance findings.
-"""
+content = "Built a framework that combines evidence from code, dependencies, configuration, documentation, and development history to identify how open-source projects integrate LLMs. Created a 200-repository benchmark and analyzed 12,991 active GitHub repositories, identifying 1,036 LLM-integrated projects. The evaluation recorded 89.11% repository-identification F1 and 84.97% loading-pattern F1. The study included responsible disclosure of security and license-compliance findings."
+
+[[items]]
+title = "ReLiEF-HGDiff · Influenza early warning"
+subtitle = "Multimodal forecasting"
+content = "Developed a state-level forecasting workflow that accounts for when surveillance and other input signals become available. Evaluated early warning for influenza surges using as-of backtesting."
+link = "https://github.com/handsomemartin2005/RELIEF-HGDiff"
+
+[[items]]
+title = "GeoMask-OMR · Piano score recognition and MusicXML reconstruction"
+subtitle = "Optical music recognition"
+content = "Built a pipeline covering staff localization, symbol detection, mask refinement, relation modeling, and MusicXML export. Prepared an 81-class DeepScores dataset with 1,362 training images and 352 validation images. Evaluated the pipeline on five real piano-score pages, producing 6,485 fused symbols and 2,187 notes. The linked StaffOMR repository documents an early rule-based baseline."
+link = "https://github.com/handsomemartin2005/StaffOMR"
+link_label = "GitHub · StaffOMR"
+
+[[items]]
+title = "Power metering reliability and intelligent operations"
+subtitle = "Power systems · Computer vision"
+content = "Developed meter-panel detection and OCR workflows and contributed to the PowerKG knowledge graph and MeterAgent diagnostic system. The team collected over 40,000 device, vendor, and fault records. Panel detection exceeded 97% accuracy, with about a 15% improvement in effective OCR recognition."
+link = "https://github.com/handsomemartin2005/YOLOv8_sensor"
+link_label = "GitHub · Meter detection / OCR"
+
+[[items]]
+title = "YOLO-ARC · Industrial surface inspection"
+subtitle = "Computer vision · ICPECA 2026"
+content = "Developed a lightweight YOLOv8-based detector for small defects on industrial surfaces."
+link = "https://github.com/handsomemartin2005/YOLO-ARC"
+
+[[items]]
+title = "HGDefect-YOLO · Industrial defect detection"
+subtitle = "Computer vision"
+content = "Developed a lightweight detector for low-contrast, irregular surface defects. On NEU-DET, the model achieved 79.9% AP50 and 45.9% AP50:95 with 5.62 million parameters."
+
+[[items]]
+title = "SCH-MDETR · Micro-UAV detection"
+subtitle = "Computer vision"
+content = "Studied small-object detection in visible-light images. The model achieved 87.37% mAP50 and 51.60% mAP50–95 on Det-Fly validation, improving mAP50–95 by 1.72 percentage points over RT-DETR-R18-N."
+link = "https://github.com/handsomemartin2005/ACCV2026"
+
+[[items]]
+title = "MobiusKV · Cache lifecycle prototype"
+subtitle = "LLM systems"
+content = "Built a lightweight synthetic benchmark for studying KV-cache reuse and eviction policies across multi-step workflows."
+link = "https://github.com/handsomemartin2005/Mobius-Band"
+
+[[items]]
+title = "Novel2Gal · Fiction-to-visual-novel workbench"
+subtitle = "Applied generative AI"
+content = "Built an AI-assisted workbench for converting long-form fiction into interactive visual-novel scripts with character point of view and branching scenes."
+link = "https://github.com/handsomemartin2005/Nover2Gal"
+
+[[items]]
+title = "RAICOM · Traffic sign classification"
+subtitle = "Robotics competition project"
+content = "Prepared multi-source traffic-sign datasets and a pretraining workflow for robust sign classification."
+link = "https://github.com/handsomemartin2005/Raicom_final"
+
+[[items]]
+title = "AI-driven dynamic tiering for smart charging stations"
+subtitle = "Energy systems"
+content = "Designed a charging-station management workflow that combines demand forecasting with dynamic tiering, pricing, coordinated charging guidance, multi-agent dispatch, and alerts."
+
+[[items]]
+title = "Intelligent vehicle violation detection and analysis"
+subtitle = "Applied computer vision"
+content = "Designed a prototype for detecting vehicle anomalies and analyzing spatiotemporal patterns in traffic data."

@@ -1,3 +1,11 @@
 type = "text"
 title = "Curriculum vitae"
 source = "cv.md"
+appendix = "cv-skills.md"
+
+[cv_sections]
+internships = "Research internships"
+projects = "Research and engineering projects"
+publications = "Publications and manuscripts"
+awards = "Honors and awards"
+projectLink = "GitHub"
