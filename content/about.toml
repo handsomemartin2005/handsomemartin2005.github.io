@@ -2,7 +2,7 @@ type = "about"
 title = "Home"
 
 [profile]
-research_interests = ["Computer vision", "Multimodal forecasting", "Hypergraph learning", "LLM agents"]
+research_interests = ["LLM agent security", "Trustworthy AI and privacy", "Computer vision", "Multimodal forecasting"]
 
 [[sections]]
 id = "research"

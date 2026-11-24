@@ -1,5 +1,5 @@
 type = "card"
-title = "Internship and research assistant experience"
+title = "Research internships"
 
 [[items]]
 title = "Summer Research Intern"
@@ -12,9 +12,9 @@ content = """
 """
 
 [[items]]
-title = "Research Assistant"
+title = "Research Intern"
 subtitle = "North China Energy Internet Research Institute"
-date = "Jul 2025–Jul 2026"
+date = "Jul 2025–Present"
 content = """
 - Built a multi-source pipeline for electricity load forecasting with more than 100,000 trainable samples.
 - Integrated LLM-assisted event extraction and SHAP-based analysis for abnormal-load attribution and forecast correction.

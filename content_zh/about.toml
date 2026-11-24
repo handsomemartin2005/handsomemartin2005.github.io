@@ -2,7 +2,7 @@ type = "about"
 title = "首页"
 
 [profile]
-research_interests = ["计算机视觉", "多模态预测", "超图学习", "大模型智能体"]
+research_interests = ["大语言模型智能体安全", "可信人工智能与隐私保护", "计算机视觉", "多模态预测"]
 
 [[sections]]
 id = "research"
