@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react';
 import Image from 'next/image';
+import ResearchAreaIcon from './ResearchAreaIcon';
 import { ArrowDownTrayIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { useMessages } from '@/lib/i18n/useMessages';
 import type { Publication, ResearchArea } from '@/types/publication';
@@ -86,7 +87,10 @@ export default function FeaturedCarousel({ papers, zh }: {
             </article>)}
         </div>
         <div className="rl-carousel-bar">
-            <span>{labels.researchAreas[current.area]}</span>
+            <span className="rl-carousel-area">
+                <ResearchAreaIcon area={current.area} />
+                <span>{labels.researchAreas[current.area]}</span>
+            </span>
             {multiple && <div className="rl-pager">
                 <button type="button" aria-label={zh ? '上一项研究' : 'Previous research item'} onClick={() => move(-1)}><ChevronLeftIcon width={17} /></button>
                 <span aria-hidden="true">{position.index + 1} / {slides.length}</span>

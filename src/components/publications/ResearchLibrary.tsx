@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import FeaturedCarousel from './FeaturedCarousel';
+import ResearchAreaIcon from './ResearchAreaIcon';
 import { ArrowDownTrayIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import type { Publication, ResearchArea } from '@/types/publication';
 import { useMessages } from '@/lib/i18n/useMessages';
@@ -37,7 +38,10 @@ export default function ResearchLibrary({ publications, locale }: {
         {!needle && !year && !type && <FeaturedCarousel key={area} papers={papers} zh={zh} />}
         <section className="rl-controls" aria-label={labels.filters}>
             <div className="rl-areas" role="group" aria-label={zh ? '研究方向' : 'Research area'}>
-                {(['all', ...areas] as const).map(key => <button key={key} data-field={key} type="button" aria-pressed={area === key} onClick={() => setArea(key)}>{key === 'all' ? common.all : labels.researchAreas[key]}</button>)}
+                {(['all', ...areas] as const).map(key => <button key={key} data-field={key} type="button" aria-pressed={area === key} onClick={() => setArea(key)}>
+                    <ResearchAreaIcon area={key} />
+                    {key === 'all' ? common.all : labels.researchAreas[key]}
+                </button>)}
             </div>
             <div className="rl-tools">
                 <label className="rl-search"><MagnifyingGlassIcon width={16} aria-hidden="true" /><input type="search" value={query} onChange={e => setQuery(e.target.value)} aria-label={labels.searchPlaceholder} placeholder={labels.searchPlaceholder} /></label>
@@ -51,7 +55,10 @@ export default function ResearchLibrary({ publications, locale }: {
                 if (!group.length) return null;
                 return <section key={field} data-field={field} aria-label={labels.researchAreas[field]}>
                     {group.map(p => <article key={p.id} className="rl-row">
-                        <p className="rl-field">{labels.researchAreas[field]}</p>
+                        <p className="rl-field">
+                            <ResearchAreaIcon area={field} />
+                            <span>{labels.researchAreas[field]}</span>
+                        </p>
                         <div><h3 lang="en">{p.title}</h3><p className="rl-meta">{[p.targetVenue || p.conference || p.journal || p.year, labels.status[p.status], p.reviewScores && `${labels.reviewScores} ${p.reviewScores}`].filter(Boolean).join(' · ')}</p>
                             {p.authors.length > 0 && <p className="rl-authors">{p.authors.map(a => a.name).join(', ')}</p>}
                             {p.description && <p className="rl-description">{p.description}</p>}
