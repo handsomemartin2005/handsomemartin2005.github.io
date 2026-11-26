@@ -39,4 +39,5 @@ export interface CardPageConfig extends BasePageConfig {
     type: 'card';
     items: CardItem[];
     section_source?: string;
+    layout?: 'timeline';
 }

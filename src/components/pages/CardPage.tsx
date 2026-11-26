@@ -57,10 +57,36 @@ export default function CardPage({ config, embedded = false, additionalSection }
                     <h2 id={`${config.section_source}-title`} className="mb-5 text-2xl font-serif font-bold text-primary">
                         {additionalSection.title}
                     </h2>
-                    <CardGrid items={additionalSection.items} embedded={embedded} />
+                    {additionalSection.layout === 'timeline' ? (
+                        <ProjectTimeline items={additionalSection.items} />
+                    ) : (
+                        <CardGrid items={additionalSection.items} embedded={embedded} />
+                    )}
                 </section>
             )}
         </motion.div>
+    );
+}
+
+function ProjectTimeline({ items }: { items: CardItem[] }) {
+    return (
+        <ol className="border-s border-neutral-200 dark:border-neutral-700">
+            {items.map(item => (
+                <li key={item.id ?? item.title} className="relative pb-7 ps-5 last:pb-0 sm:ps-7">
+                    <span aria-hidden="true" className="absolute -start-1 top-1.5 size-2 rounded-full bg-accent" />
+                    <div className="mb-1 flex flex-wrap items-baseline gap-x-3 text-sm text-accent">
+                        {item.date && <time dateTime={item.date} className="font-semibold tabular-nums">{item.date}</time>}
+                        {item.subtitle && <span>{item.subtitle}</span>}
+                    </div>
+                    <h3 className="mb-2 text-lg font-semibold text-primary">{item.title}</h3>
+                    {item.content && (
+                        <div className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400 sm:text-base">
+                            <ReactMarkdown components={markdownComponents}>{item.content}</ReactMarkdown>
+                        </div>
+                    )}
+                </li>
+            ))}
+        </ol>
     );
 }
 
