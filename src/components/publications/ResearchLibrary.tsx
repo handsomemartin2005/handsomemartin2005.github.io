@@ -33,7 +33,7 @@ export default function ResearchLibrary({ publications, locale }: {
     return <div className="research-library">
         <header className="rl-mast">
             <p className="rl-kicker">{zh ? '论文与研究' : 'Publications'}</p>
-            <h1 lang="en">Research library</h1>
+            <h1 lang={zh ? 'zh' : 'en'}>{zh ? '研究文库' : 'Research library'}</h1>
         </header>
         {!needle && !year && !type && <FeaturedCarousel key={area} papers={papers} zh={zh} />}
         <section className="rl-controls" aria-label={labels.filters}>
