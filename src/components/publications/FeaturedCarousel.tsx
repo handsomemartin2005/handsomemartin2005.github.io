@@ -44,7 +44,7 @@ export default function FeaturedCarousel({ papers, zh }: {
             id: p.id, area: p.researchArea,
             name: colon < 0 ? p.title : p.title.slice(0, colon),
             subtitle: colon < 0 ? p.description ?? '' : p.title.slice(colon + 1).trim(),
-            meta: [p.targetVenue || p.conference || p.journal, labels.status[p.status]].filter(Boolean).join(' / '),
+            meta: [p.targetVenue || p.conference || p.journal, p.status !== 'rejected' && labels.status[p.status]].filter(Boolean).join(' / '),
             authors: p.authors.map(a => a.name).join(', '), pdf: p.pdfUrl, cover: covers[p.id],
         };
     });
