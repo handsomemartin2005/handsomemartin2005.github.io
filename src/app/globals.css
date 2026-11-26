@@ -130,8 +130,8 @@
 
 /* The same text and display faces are used on every localized page. */
 :root {
-  --site-sans: Inter, 'Segoe UI', 'Microsoft YaHei', sans-serif;
-  --site-serif: Baskervville, Georgia, 'Songti SC', SimSun, serif;
+  --site-sans: 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', 'Noto Sans CJK SC', sans-serif;
+  --site-serif: Cambria, 'Times New Roman', SimSun, 'Songti SC', 'Noto Serif CJK SC', serif;
 }
 main :is(h1, h2, h3, h4) {
   font-family: var(--site-serif);

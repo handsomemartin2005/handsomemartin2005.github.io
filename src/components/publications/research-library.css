@@ -18,6 +18,7 @@
 .rl-kicker { font-size: .75rem; font-weight: 650; letter-spacing: .11em; color: var(--rl-accent); }
 .rl-mast h1, .rl-feature h2, .rl-row h3 { font-family: var(--site-serif); font-weight: 400; }
 .rl-mast h1 { font-size: clamp(3.5rem, 6.2vw, 5.8rem); letter-spacing: -.055em; line-height: 1; margin: 6px 0 26px; }
+.rl-mast h1:lang(zh) { letter-spacing: normal; line-height: 1.15; }
 .rl-feature { overflow: hidden; padding: 28px 36px 14px; border-radius: 9px; background: var(--field-bg, #183858); transition: background-color 360ms ease; touch-action: pan-y pinch-zoom; color: white; }
 .rl-feature h2 { font-size: clamp(2.5rem, 4.8vw, 4rem); line-height: 1.04; letter-spacing: -.042em; margin: 10px 0 6px; }
 .rl-feature .rl-kicker { color: #c2def7; }
