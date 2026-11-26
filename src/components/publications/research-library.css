@@ -67,9 +67,28 @@
 .research-library [data-field="energy"] { --field-bg: #214c41; --field-tone: #25664e; --field-light: #a4debf; }
 .research-library [data-field="other"] { --field-bg: #66412b; --field-tone: #87502c; --field-light: #f4c8a5; }
 .rl-areas button, .rl-carousel-area { display: inline-flex; align-items: center; gap: .4em; }
-.rl-field { display: flex; align-items: flex-start; gap: .4em; }
+.rl-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .65rem;
+  max-width: 15ch;
+  font-weight: 550;
+}
 .rl-area-icon { width: 1.15em; height: 1.15em; flex: none; }
-.rl-field .rl-area-icon { margin-top: .17em; }
+.rl-field .rl-area-icon {
+  box-sizing: border-box;
+  width: clamp(4.5rem, 9vw, 6rem);
+  height: clamp(4.5rem, 9vw, 6rem);
+  padding: .95rem;
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-radius: 1rem;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+}
+@media (max-width: 680px) {
+  .rl-field { flex-direction: row; align-items: center; gap: .45rem; max-width: none; }
+  .rl-field .rl-area-icon { width: 1.85rem; height: 1.85rem; padding: .28rem; border-radius: .45rem; }
+}
 .rl-areas button:not([data-field="all"]) .rl-area-icon { color: var(--field-tone); }
 .rl-carousel-area .rl-area-icon { color: var(--field-light); }
 .rl-areas button:not([data-field="all"])[aria-pressed="true"] { background: var(--field-bg); border-color: var(--field-bg); color: white; }
