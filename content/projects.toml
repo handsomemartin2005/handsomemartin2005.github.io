@@ -8,8 +8,10 @@ subtitle = "LLM agent security · Ongoing"
 content = "Studies how the actual effects of tool use can differ from what an agent visibly requests. The project evaluates data exposure and authorization risks in controlled settings to inform better auditing."
 
 [[items]]
-title = "Language-conditioned UAV control"
+title = "VLA · Language-conditioned UAV control"
 subtitle = "Vision-language-action models · Manuscript draft"
+link = "/publications/#zhang-uav-residual-adaptation"
+link_label = "View manuscript draft"
 content = "Studies parameter-efficient adaptation of vision-language-action models for aerial navigation. The draft evaluates how spatial and motion context affect action prediction on a navigation benchmark."
 
 [[items]]

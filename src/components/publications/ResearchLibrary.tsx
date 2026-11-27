@@ -8,7 +8,7 @@ import type { Publication, ResearchArea } from '@/types/publication';
 import { useMessages } from '@/lib/i18n/useMessages';
 import './research-library.css';
 
-const areas: ResearchArea[] = ['software-security', 'computer-vision', 'energy', 'other'];
+const areas: ResearchArea[] = ['software-security', 'computer-vision', 'vla', 'energy', 'other'];
 
 export default function ResearchLibrary({ publications, locale }: {
     publications: Publication[];
@@ -54,7 +54,7 @@ export default function ResearchLibrary({ publications, locale }: {
                 const group = papers.filter(p => p.researchArea === field);
                 if (!group.length) return null;
                 return <section key={field} data-field={field} aria-label={labels.researchAreas[field]}>
-                    {group.map(p => <article key={p.id} className="rl-row">
+                    {group.map(p => <article key={p.id} id={p.id} className="rl-row">
                         <p className="rl-field">
                             <ResearchAreaIcon area={field} />
                             <span>{labels.researchAreas[field]}</span>

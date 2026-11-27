@@ -40,7 +40,7 @@
 .rl-search { flex: 1; display: flex; align-items: center; gap: 8px; }
 .rl-search input { min-width: 0; width: 100%; background: transparent; padding: 4px 0; }
 .rl-tools select { padding: 3px; border-bottom: 1px solid var(--rl-rule); background: var(--background); color: inherit; }
-.rl-row { display: grid; grid-template-columns: minmax(112px, 16%) minmax(0, 1fr) auto; gap: 22px; border-top: 1px solid var(--rl-rule); padding: 18px 0; }
+.rl-row { scroll-margin-top: 6rem; display: grid; grid-template-columns: minmax(112px, 16%) minmax(0, 1fr) auto; gap: 22px; border-top: 1px solid var(--rl-rule); padding: 18px 0; }
 .rl-field { font-size: .8rem; color: var(--rl-soft); padding-top: 3px; }
 .rl-row h3 { font-size: clamp(1.19rem, 1.8vw, 1.52rem); line-height: 1.28; letter-spacing: -.018em; }
 .rl-meta { color: var(--rl-accent); font-weight: 550; font-size: .8rem; margin-top: 5px; }
@@ -66,6 +66,7 @@
 .research-library [data-field="software-security"] { --field-bg: #183858; --field-tone: #245a95; --field-light: #a8cefa; }
 .research-library [data-field="computer-vision"] { --field-bg: #483661; --field-tone: #69458c; --field-light: #dec5fb; }
 .research-library [data-field="energy"] { --field-bg: #214c41; --field-tone: #25664e; --field-light: #a4debf; }
+.research-library [data-field="vla"] { --field-bg: #69374b; --field-tone: #8b3654; --field-light: #f7c1d4; }
 .research-library [data-field="other"] { --field-bg: #66412b; --field-tone: #87502c; --field-light: #f4c8a5; }
 .rl-areas button, .rl-carousel-area { display: inline-flex; align-items: center; gap: .4em; }
 .rl-field {

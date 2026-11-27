@@ -78,6 +78,6 @@ export type PublicationStatus =
   | 'in-preparation'
   | 'draft';
 
-export const researchAreas = ['energy', 'computer-vision', 'software-security', 'other'] as const;
+export const researchAreas = ['energy', 'computer-vision', 'software-security', 'vla', 'other'] as const;
 
 export type ResearchArea = typeof researchAreas[number];

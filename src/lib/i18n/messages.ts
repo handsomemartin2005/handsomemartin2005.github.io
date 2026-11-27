@@ -105,7 +105,7 @@ const en: LocaleMessages = {
     reviewScores: 'Review scores',
     manuscript: 'Manuscript',
     downloadPdf: 'Download PDF',
-    researchAreas: { energy: 'Energy', 'computer-vision': 'Computer vision', 'software-security': 'Software engineering and security', other: 'Other research' },
+    researchAreas: { energy: 'Energy', 'computer-vision': 'Computer vision', 'software-security': 'Software engineering and security', vla: 'VLA', other: 'Other research' },
     viewEnergyProjects: 'View energy project experience',
   },
   footer: {
@@ -163,7 +163,7 @@ const zh: LocaleMessages = {
     reviewScores: '评审分数',
     manuscript: '手稿',
     downloadPdf: '下载 PDF',
-    researchAreas: { energy: '能源', 'computer-vision': '计算机视觉', 'software-security': '软件工程与安全', other: '其他研究' },
+    researchAreas: { energy: '能源', 'computer-vision': '计算机视觉', 'software-security': '软件工程与安全', vla: 'VLA（视觉–语言–动作）', other: '其他研究' },
     viewEnergyProjects: '查看能源项目经历',
   },
   footer: {

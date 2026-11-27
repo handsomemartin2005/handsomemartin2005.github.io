@@ -1,4 +1,4 @@
-import { BeakerIcon, BoltIcon, ShieldCheckIcon, Squares2X2Icon, ViewfinderCircleIcon } from '@heroicons/react/24/outline';
+import { BeakerIcon, BoltIcon, PaperAirplaneIcon, ShieldCheckIcon, Squares2X2Icon, ViewfinderCircleIcon } from '@heroicons/react/24/outline';
 import type { ResearchArea } from '@/types/publication';
 
 const icons = {
@@ -6,6 +6,7 @@ const icons = {
     'software-security': ShieldCheckIcon,
     'computer-vision': ViewfinderCircleIcon,
     energy: BoltIcon,
+    vla: PaperAirplaneIcon,
     other: BeakerIcon,
 } satisfies Record<ResearchArea | 'all', typeof Squares2X2Icon>;
 

@@ -8,8 +8,10 @@ subtitle = "大语言模型智能体安全 · 进行中"
 content = "研究智能体工具调用中可见的请求与工具实际行为之间的差异，通过受控评估分析数据暴露与授权风险，为改进审计提供依据。"
 
 [[items]]
-title = "语言条件下的无人机控制"
+title = "VLA · 语言条件下的无人机控制"
 subtitle = "视觉–语言–动作模型 · 初稿"
+link = "/publications/#zhang-uav-residual-adaptation"
+link_label = "查看论文初稿"
 content = "研究面向无人机导航的视觉–语言–动作模型高效适配。在导航基准上评估空间信息和运动历史对动作预测的影响。"
 
 [[items]]
